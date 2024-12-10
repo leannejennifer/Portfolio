@@ -17,7 +17,7 @@
         [TestCase(12)]
         [TestCase(18)]
         [TestCase(21)]
-        public void GetFizzBuzzWord_DivisibleByThree_OutputFizz(int index)
+        public void DisplayFizzBuzzWord_DivisibleByThree_OutputFizz(int index)
         {
             //Arrange
             _writer = new StringWriter();
@@ -33,7 +33,7 @@
         [TestCase(10)]
         [TestCase(20)]
         [TestCase(25)]
-        public void GetFizzBuzzWord_DivisibleByFive_OutputBuzz(int index)
+        public void DisplayFizzBuzzWord_DivisibleByFive_OutputBuzz(int index)
         {
             //Arrange
             _writer = new StringWriter();
@@ -47,7 +47,7 @@
 
         [TestCase(15)]
         [TestCase(30)]
-        public void GetFizzBuzzWord_DivisibleByBothThreeAndFive_OutputFizzBuzz(int index)
+        public void DisplayFizzBuzzWord_DivisibleByBothThreeAndFive_OutputFizzBuzz(int index)
         {
             //Arrange
             _writer = new StringWriter();
@@ -61,7 +61,7 @@
 
         [TestCase(31)]
 
-        public void GetFizzBuzzWord_NotDivisibleByThreeOrFive_OuputNumber(int index)
+        public void DisplayFizzBuzzWord_NotDivisibleByThreeOrFive_OuputNumber(int index)
         {
             //Arrange
             _writer = new StringWriter();
@@ -80,7 +80,7 @@
         [TestCase(15, "FizzBuzz")]
         [TestCase(30, "FizzBuzz")]
         [TestCase(31, "31")]
-        public void GetFizzBuzzWord_InputNumber_OutputCorrectResponse(int input, string output)
+        public void DisplayFizzBuzzWord_InputNumber_OutputCorrectResponse(int input, string output)
         {
             //Arrange
             _writer = new StringWriter();
