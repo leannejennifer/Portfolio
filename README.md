@@ -6,7 +6,6 @@ FizzBuzz is a simple programming exercise that involves printing numbers from 1 
 - If the number is divisible by 5, print "Buzz" instead of the number. 
 - If the number is divisible by both 3 and 5, print "FizzBuzz" instead of the number.
 
-## Solution
 **Approach:**
 1. Divide the input by 15 first to catch all the numbers that are divisible by 3 and 5.
 
@@ -25,3 +24,13 @@ The task involves taking a given string as input and reversing the order of its 
 3. **Return the Reversed String:**
     - Once we've processed all characters, we return the newly constructed reversed string.
 
+# Vowel Count
+A vowel counter is a common programming exercise that involves creating a program to count the number of vowels (a, e, i, o, u) in a given string. This is often used as a beginner-friendly task to introduce concepts like:
+
+- **String manipulation:** Working with strings, their characters, and their lengths.
+- **Looping:** Iterating over each character in the string.
+- **Conditional statements:** Checking if a character is a vowel.
+- **Variable declaration and assignment:** Storing the vowel count.
+
+**Approach:**
+There are three approaches taken in this solution; checking if the char is in an array using the contains method (slowest approach), Linq and checking if the char is in a hashset using the contains method. 

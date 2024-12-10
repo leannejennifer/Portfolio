@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Portfolio
 {
@@ -20,6 +16,50 @@ namespace Portfolio
             }
 
             return stringBuilder.ToString();
+        }
+
+        // array method is slower as the values are not unique
+        private static readonly char[] _vowels = [ 'a', 'e', 'i', 'o', 'u' ];
+
+        public static int CalculateVowelCount(string inputString)
+        {
+            var vowelCount = 0;
+
+            var lowercaseInput = inputString;
+            for (int i = 0; i < lowercaseInput.Length; i++)
+            {
+                if (_vowels.Contains(lowercaseInput[i])){
+                    vowelCount++;
+                }
+
+            }
+
+            return vowelCount;
+        }
+
+        public static int CalculateVowelCountLinq(string inputString)
+        {
+            return inputString.ToLowerInvariant().Count(c => _vowels.Contains(c));
+        }
+
+        // faster lookup times because hashset is a set of unique values
+        private static readonly HashSet<char> _hashVowels = ['a', 'e', 'i', 'o', 'u'];
+
+        public static int CalculateVowelCountHash(string inputString)
+        {
+            var vowelCount = 0;
+
+            var lowercaseInput = inputString;
+            for (int i = 0; i < lowercaseInput.Length; i++)
+            {
+                if (_hashVowels.Contains(lowercaseInput[i]))
+                {
+                    vowelCount++;
+                }
+
+            }
+
+            return vowelCount;
         }
 
     }
