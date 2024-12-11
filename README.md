@@ -34,3 +34,9 @@ A vowel counter is a common programming exercise that involves creating a progra
 
 **Approach:**
 There are three approaches taken in this solution; checking if the char is in an array using the contains method (slowest approach), Linq and checking if the char is in a hashset using the contains method. 
+
+# Array sorting
+An array of integers needs to be sorted from smallest to largest. 
+
+**Approach:**
+1. Option one is to use bubble sort which swaps adjacent values until the value has made its way along the array. 
