@@ -4,6 +4,24 @@ namespace Portfolio
 {
     public static class StringHelper
     {
+        //could use linq to improve this
+        public static string PigLatin(string input)
+        {
+            var inputWords = input.Split(" ");
+            var outputWords = new string[inputWords.Length];
+
+            for (var i = 0; i < inputWords.Length; i++)
+            {
+                var word = inputWords[i];
+                var firstLetter = word[0];
+                var restOfWord = word.Substring(1);
+                outputWords[i] = restOfWord + firstLetter + (char.IsPunctuation(firstLetter) ? "" : "ay" );
+            }
+
+            return string.Join(' ', outputWords);
+
+        }
+
         public static string ReverseString(string inputString)
         {
             var lowercaseInput = inputString.ToLower();

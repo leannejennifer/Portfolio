@@ -77,5 +77,23 @@
             ];
 
         #endregion
+
+        #region
+
+        [TestCase("Pig latin is cool", "igPay atinlay siay oolcay")]
+        [TestCase("Hello world !", "elloHay orldway !")]
+
+        public void PigLatin_InputString_ReturnStringInCorrectFormat(string input, string output)
+        {
+            //Arrange
+
+            //Act
+            var formattedString = StringHelper.PigLatin(input);
+            //Assert
+            Assert.That(formattedString, Is.EqualTo(output));
+        }
+
+
+        #endregion
     }
 }
