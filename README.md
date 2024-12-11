@@ -47,3 +47,17 @@ Move the first letter of each word to the end of it, then add "ay" to the end of
 **Examples:**
 - "Pig latin is cool" // igPay atinlay siay oolcay
 - "Hello world !" // elloHay orldway !
+
+# High and Low 
+You are given a string of space separated numbers, and have to return the highest and lowest number.
+
+- All numbers are valid Int32, no need to validate them.
+- There will always be at least one number in the input string.
+- Output string must be two numbers separated by a single space, and highest number is first.
+
+**Examples:**
+
+HighAndLow("1 2 3 4 5");  // return "5 1"
+HighAndLow("1 2 -3 4 5"); // return "5 -3"
+HighAndLow("1 9 3 4 -5"); // return "9 -5"
+HighAndLow("1 9 3 40 -5"); // return "40 -5"
