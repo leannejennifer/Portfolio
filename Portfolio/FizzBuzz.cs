@@ -14,13 +14,13 @@ namespace Portfolio
             {
                 Console.WriteLine("FizzBuzz");
             }
-            else if (index % 5 == 0)
-            {
-                Console.WriteLine("Buzz");
-            }
             else if (index % 3 == 0)
             {
                 Console.WriteLine("Fizz");
+            }
+            else if (index % 5 == 0)
+            {
+                Console.WriteLine("Buzz");
             }
             else
             {
