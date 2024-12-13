@@ -1,0 +1,16 @@
+﻿@page "/Students"
+
+<h3>Students</h3>
+
+@using Portfolio.UI.Services
+
+@inject IApiService ApiService
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        var students = await ApiService.GetStudentsAsync();
+    }
+
+}
