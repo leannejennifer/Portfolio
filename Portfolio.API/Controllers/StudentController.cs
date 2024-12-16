@@ -7,9 +7,7 @@ namespace Portfolio.API.Controllers
     [Route("api/[controller]")]
     public class StudentController : Controller
     {
-
         [HttpGet("GetStudents")]
-        ///[Route("GetStudents")]
         public IEnumerable<Student> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new Student

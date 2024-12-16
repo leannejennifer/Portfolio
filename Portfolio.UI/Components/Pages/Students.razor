@@ -2,15 +2,30 @@
 
 <h3>Students</h3>
 
-@using Portfolio.UI.Services
+@if(students == null){
+    <h1>Loading...</h1>
+}
+else if(students.Count() == 0)
+{
+    <p>There are no students.</p>
+}
+else{
+    <ul>
+        @foreach (var student in students)
+        {
+            <li>@student.FirstName @student.LastName</li>
+        }
+    </ul>
+}
 
+@using Portfolio.UI.Models
+@using Portfolio.UI.Services
 @inject IApiService ApiService
 
 @code {
-
+    private IEnumerable<Student>? students;
     protected override async Task OnInitializedAsync()
     {
-        var students = await ApiService.GetStudentsAsync();
+        students = await ApiService.GetStudentsAsync();
     }
-
 }
