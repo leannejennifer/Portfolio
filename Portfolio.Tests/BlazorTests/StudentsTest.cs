@@ -10,20 +10,24 @@ namespace Portfolio.Tests.BlazorTests
     // TestContext is a bUnit base class 
     public class StudentsTest : Bunit.TestContext
     {
+        private Mock<IApiService> _mockApiService;
+
+        public StudentsTest()
+        {
+            _mockApiService = new Mock<IApiService>();
+            Services.AddSingleton(_mockApiService.Object);
+        }
 
         [Test]
         public void StudentsPage_NoStudents_RendersWithMessage()
         {
             // Arrange
-            var mockApiService = new Mock<IApiService>();
-            mockApiService.Setup(service => service.GetStudentsAsync())
+            _mockApiService.Setup(service => service.GetStudentsAsync())
                 .ReturnsAsync(Enumerable.Empty<Student>());
-
-            Services.AddSingleton(mockApiService.Object);
 
             // Act
             var cut = RenderComponent<Students>(parameters => parameters
-                .AddCascadingValue(mockApiService.Object)); 
+                .AddCascadingValue(_mockApiService.Object)); 
 
             // Assert
             cut.MarkupMatches("<h3>Students</h3><p>There are no students.</p>");
@@ -41,15 +45,12 @@ namespace Portfolio.Tests.BlazorTests
                 new Student(),
             };
 
-            var mockApiService = new Mock<IApiService>();
-            mockApiService.Setup(service => service.GetStudentsAsync())
+            _mockApiService.Setup(service => service.GetStudentsAsync())
                 .ReturnsAsync(students);
-
-            Services.AddSingleton(mockApiService.Object);
 
             //Act
             var cut = RenderComponent<Students>(parameters => parameters
-                .AddCascadingValue(mockApiService.Object));
+                .AddCascadingValue(_mockApiService.Object));
 
             //Assert
             var bullets = cut.FindAll("li");
