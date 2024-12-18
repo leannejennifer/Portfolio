@@ -10,7 +10,7 @@ namespace Portfolio.Tests.BlazorTests
     // TestContext is a bUnit base class 
     public class StudentsTest : Bunit.TestContext
     {
-        private Mock<IApiService> _mockApiService;
+        private readonly Mock<IApiService> _mockApiService;
 
         public StudentsTest()
         {
@@ -23,7 +23,7 @@ namespace Portfolio.Tests.BlazorTests
         {
             // Arrange
             _mockApiService.Setup(service => service.GetStudentsAsync())
-                .ReturnsAsync(Enumerable.Empty<Student>());
+                .ReturnsAsync([]);
 
             // Act
             var cut = RenderComponent<Students>(parameters => parameters
@@ -40,9 +40,9 @@ namespace Portfolio.Tests.BlazorTests
             //Arrange
             var students = new List<Student>()
             {
-                new Student(),
-                new Student(),
-                new Student(),
+                new(),
+                new(),
+                new(),
             };
 
             _mockApiService.Setup(service => service.GetStudentsAsync())
