@@ -1,0 +1,37 @@
+﻿@page "/student-form"
+
+@using Portfolio.UI.Models
+@using System.ComponentModel.DataAnnotations
+
+<h3>Student Form</h3>
+<EditForm Model=@Model FormName="StudentForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary/>
+
+    <label for="FirstName">First Name</label>
+    <InputText @bind-Value=Model.FirstName class="form-control" id="FirstName" />
+    <ValidationMessage For=@(() => Model.FirstName ) />
+
+    <label for="LastName">Last Name</label>
+    <InputText @bind-Value=Model.LastName class="form-control" id="LastName" />
+    <ValidationMessage For=@(() => Model.LastName ) />
+    <br/>
+    <input type="submit"/>
+</EditForm>
+
+@code {
+
+    protected override void OnInitialized() => Model = Model?? new();
+
+    [Parameter]
+    public CreateStudent? Model { get; set; }
+
+    public class CreateStudent{
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+    }
+
+}
