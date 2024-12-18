@@ -5,18 +5,22 @@ namespace Portfolio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class StudentController : Controller
+    public class StudentController(IDbContext dbContext) : Controller
     {
         [HttpGet("GetStudents")]
-        public IEnumerable<Student> Get()
+        public ActionResult<IEnumerable<Student>> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new Student
+            var students = dbContext.GetCollection(typeof(Student));
+
+            if(!students.Any())
             {
-                StudentId = index,
-                FirstName = "John",
-                LastName = "Smith " + index
-            })
-            .ToArray();
+                return NotFound();
+            }
+            else
+            {
+                return Ok(students);
+            } 
+                
         }
     }
 }
