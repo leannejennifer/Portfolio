@@ -5,8 +5,7 @@ using Portfolio.UI.Components.Pages;
 using Portfolio.UI.Models;
 using Portfolio.UI.Services;
 
-
-namespace Portfolio.Tests
+namespace Portfolio.Tests.BlazorTests
 {
     // TestContext is a bUnit base class 
     public class StudentsTest : Bunit.TestContext
@@ -29,5 +28,7 @@ namespace Portfolio.Tests
             // Assert
             cut.MarkupMatches("<h3>Students</h3><p>There are no students.</p>");
         }
+
+
     }
 }
