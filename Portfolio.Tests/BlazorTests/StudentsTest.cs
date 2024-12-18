@@ -23,12 +23,38 @@ namespace Portfolio.Tests.BlazorTests
 
             // Act
             var cut = RenderComponent<Students>(parameters => parameters
-                .AddCascadingValue(mockApiService.Object)); // Inject the mock
+                .AddCascadingValue(mockApiService.Object)); 
 
             // Assert
             cut.MarkupMatches("<h3>Students</h3><p>There are no students.</p>");
         }
 
+        [Test]
+
+        public void StudentsPage_ThreeStudents_ReturnsThreeBulletPoints()
+        {
+            //Arrange
+            var students = new List<Student>()
+            {
+                new Student(),
+                new Student(),
+                new Student(),
+            };
+
+            var mockApiService = new Mock<IApiService>();
+            mockApiService.Setup(service => service.GetStudentsAsync())
+                .ReturnsAsync(students);
+
+            Services.AddSingleton(mockApiService.Object);
+
+            //Act
+            var cut = RenderComponent<Students>(parameters => parameters
+                .AddCascadingValue(mockApiService.Object));
+
+            //Assert
+            var bullets = cut.FindAll("li");
+            Assert.That(bullets, Has.Count.EqualTo(3));
+        }
 
     }
 }
