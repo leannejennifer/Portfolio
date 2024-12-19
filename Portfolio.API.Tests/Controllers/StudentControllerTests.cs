@@ -38,7 +38,6 @@ namespace Portfolio.API.Tests.Controllers
         public void GetStudents_TypeIsNotFound_ReturnsNotFound()
         {
             //Arrange
-
             var mockDBContext = new Mock<IDbContext>();
             mockDBContext.Setup(d => d.GetCollection(typeof(object))).Returns((IEnumerable<Student>)null);
 
