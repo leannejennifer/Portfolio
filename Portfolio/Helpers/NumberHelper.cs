@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Portfolio
+namespace Portfolio.Helpers
 {
     public static class NumberHelper
     {
@@ -19,7 +19,7 @@ namespace Portfolio
             var highNumber = int.MinValue;
             var lowNumber = int.MaxValue;
 
-            for(int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
                 var number = int.Parse(numbers[i]);
 
@@ -35,6 +35,12 @@ namespace Portfolio
             }
 
             return highNumber + " " + lowNumber;
+        }
+
+        public static int GetRandomNumber(int maxValue)
+        {
+            Random random = new();
+            return random.Next(maxValue);
         }
     }
 }

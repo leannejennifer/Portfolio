@@ -1,4 +1,6 @@
-﻿namespace Portfolio;
+﻿using Portfolio.Helpers;
+
+namespace Portfolio;
 public class Program
 {
     private static void Main(string[] args)

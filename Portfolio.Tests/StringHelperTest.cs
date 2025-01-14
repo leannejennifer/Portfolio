@@ -1,4 +1,6 @@
-﻿namespace Portfolio.Tests
+﻿using Portfolio.Helpers;
+
+namespace Portfolio.Tests
 {
     [TestFixture]
     public class StringHelperTest

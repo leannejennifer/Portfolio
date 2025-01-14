@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Portfolio
+namespace Portfolio.Helpers
 {
     public static class StringHelper
     {
@@ -15,7 +15,7 @@ namespace Portfolio
                 var word = inputWords[i];
                 var firstLetter = word[0];
                 var restOfWord = word.Substring(1);
-                outputWords[i] = restOfWord + firstLetter + (char.IsPunctuation(firstLetter) ? "" : "ay" );
+                outputWords[i] = restOfWord + firstLetter + (char.IsPunctuation(firstLetter) ? "" : "ay");
             }
 
             return string.Join(' ', outputWords);
@@ -28,7 +28,7 @@ namespace Portfolio
 
             // Use string builder as it is more efficient
             StringBuilder stringBuilder = new StringBuilder();
-            for (int i = lowercaseInput.Length-1; i>=0; i--)
+            for (int i = lowercaseInput.Length - 1; i >= 0; i--)
             {
                 stringBuilder.Append(lowercaseInput[i]);
             }
@@ -37,7 +37,7 @@ namespace Portfolio
         }
 
         // array method is slower as the values are not unique
-        private static readonly char[] _vowels = [ 'a', 'e', 'i', 'o', 'u' ];
+        private static readonly char[] _vowels = ['a', 'e', 'i', 'o', 'u'];
 
         public static int CalculateVowelCount(string inputString)
         {
@@ -46,7 +46,8 @@ namespace Portfolio
             var lowercaseInput = inputString;
             for (int i = 0; i < lowercaseInput.Length; i++)
             {
-                if (_vowels.Contains(lowercaseInput[i])){
+                if (_vowels.Contains(lowercaseInput[i]))
+                {
                     vowelCount++;
                 }
 

@@ -1,4 +1,4 @@
-﻿namespace Portfolio
+﻿namespace Portfolio.Helpers
 {
     public static class SortingHelper
     {
@@ -37,7 +37,7 @@
             var swapped = false;
 
             // iterates through array
-            for(int j = 0; j < sortedInts.Length - 1; j++)
+            for (int j = 0; j < sortedInts.Length - 1; j++)
             {
                 swapped = false;
                 ///In each pass, the largest element bubbles up to the end so you don't need to check the last value
