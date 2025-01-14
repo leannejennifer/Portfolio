@@ -12,6 +12,7 @@ namespace Portfolio.Enums
          Blue,
          Yellow,
          Green,
-         Pink
+         Pink,
+         Purple
     }
 }

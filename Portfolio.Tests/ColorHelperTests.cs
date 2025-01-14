@@ -16,6 +16,7 @@ namespace Portfolio.Tests
         [TestCase(2,Colors.Yellow)]
         [TestCase(3,Colors.Green)]
         [TestCase(4,Colors.Pink)] 
+        [TestCase(5,Colors.Purple)] 
         public void GetColorFromEnum_IndexExists_ReturnCorrectColor(int index, Colors expectedOutput)
 		{
             //Arrange
@@ -26,8 +27,8 @@ namespace Portfolio.Tests
             Assert.That(color, Is.EqualTo(expectedOutput));
         }
 
-        [TestCase(5)]
-        public void GetColorFromEnum_IndexDoesNotExist_ReturnEmptyString(int index)
+        [TestCase(6)]
+        public void GetColorFromEnum_IndexDoesNotExist_ThrowsIndexOutOfRange(int index)
         {
             //Arrange
 
