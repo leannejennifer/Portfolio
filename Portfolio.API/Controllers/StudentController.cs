@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Portfolio.API.Models;
 
 namespace Portfolio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class StudentController(IDbContext dbContext) : Controller
+    public class StudentController(SqlDbContext dbContext) : Controller
     {
         [HttpGet("GetStudents")]
         public ActionResult<IEnumerable<Student>> Get()

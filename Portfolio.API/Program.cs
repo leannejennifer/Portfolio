@@ -1,4 +1,5 @@
 using Portfolio.API;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IDbContext, FakeDbContext>();
+using IHost host = Host.CreateApplicationBuilder(args).Build();
+
+IConfiguration config = host.Services.GetRequiredService<IConfiguration>();
+
+string? connectionString = config.GetValue<string>("ConnectionStrings:aspire");
+
+builder.Services.AddDbContext<SqlDbContext>(options =>
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
