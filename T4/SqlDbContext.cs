@@ -1,0 +1,35 @@
+﻿using TEST.API.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace TEST.API
+{
+    public class SqlDbContext : DbContext
+    {
+        public virtual DbSet<Student> Students { get; set; }
+
+        // makes the tests work but I think there is a better fix
+        public SqlDbContext() : base()
+        {
+        }
+        public SqlDbContext(DbContextOptions<SqlDbContext> options) : base(options)
+        {
+        }
+
+        public IEnumerable<Student> GetCollection(Type type)
+        {
+            return Students;
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                // Use the entity name instead of the Context.DbSet<T> name
+                // refs https://learn.microsoft.com/en-us/ef/core/modeling/entity-types?tabs=fluent-api#table-name
+                modelBuilder.Entity(entityType.ClrType).ToTable(entityType.ClrType.Name);
+            }
+        }
+
+
+    }
+}
