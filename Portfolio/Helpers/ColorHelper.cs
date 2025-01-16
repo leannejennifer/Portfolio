@@ -9,6 +9,7 @@ namespace Portfolio.Helpers
 {
     public static class ColorHelper
     {
+        private static int? _currentColorIndex;
         public static Colors GetColorFromEnum(int index)
         {
             var lengthEnum = typeof(Colors).GetEnumValues().Length;
@@ -17,6 +18,17 @@ namespace Portfolio.Helpers
                 throw new IndexOutOfRangeException();
             
             return (Colors)index;
+        }
+        
+        public static Colors GetRandomColor()
+        {
+            var lengthEnum = typeof(Colors).GetEnumValues().Length;
+
+            var index = NumberHelper.GetRandomNumber(lengthEnum,_currentColorIndex);
+            _currentColorIndex = index;
+
+            return (Colors)index;
+            
         }
     }
 }

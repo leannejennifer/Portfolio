@@ -37,10 +37,15 @@ namespace Portfolio.Helpers
             return highNumber + " " + lowNumber;
         }
 
-        public static int GetRandomNumber(int maxValue)
+        public static int GetRandomNumber(int maxValue, int? previousValue = null)
         {
             Random random = new();
-            return random.Next(maxValue);
+
+            var range = Enumerable.Range(0, maxValue).Where(d => d != previousValue);
+
+            var randomIndex = random.Next(range.Count());
+
+            return range.ElementAt(randomIndex);
         }
     }
 }

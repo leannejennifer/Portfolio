@@ -38,5 +38,26 @@ namespace Portfolio.Tests
             Assert.Throws<IndexOutOfRangeException>(() => ColorHelper.GetColorFromEnum(index));
         }
 
+        [Test]
+        public void GetRandomColor_NoInput_DoesNotThrowException()
+        {
+            //Arrange
+            
+            //Act
+
+            //Assert
+            Assert.DoesNotThrow(() => ColorHelper.GetRandomColor());
+        }
+
+        //[Test]
+        //public void GetRandomColor_CurrentColorSet_CannotReturnSameColor()
+        //{
+        //    //Arrange
+        //    //Act
+
+        //    //Assert
+        //    Assert.DoesNotThrow(() => ColorHelper.GetRandomColor());
+        //}
+
     }
 }

@@ -40,5 +40,20 @@ namespace Portfolio.Tests
             Assert.That(randomNumber, Is.LessThan(maxLimit));
         }
 
-	}
+        [TestCase(6,0)]
+        [TestCase(6,1)]
+        [TestCase(6,2)]
+        [TestCase(6,3)]
+        [TestCase(6,4)]
+        [TestCase(6,5)]
+        public void GetRandomNumber_NoInput_DoesNotReturnPrevious(int maxLimit, int previousValue)
+        {
+            //Arrange
+
+            //Act
+            var randomNumber = NumberHelper.GetRandomNumber(maxLimit, previousValue);
+            //Assert
+            Assert.That(randomNumber, Is.Not.EqualTo(previousValue));
+        }
+    }
 }

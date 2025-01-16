@@ -12,6 +12,7 @@
 
 <input type="date" TValue="DateOnly" @onchange="DateChange" Placeholder="Enter Date" />
 
+@using Portfolio.Helpers
 @code {
     private int currentCount = 0;
     private DateOnly _date1;
@@ -26,10 +27,13 @@
     // }
     string bgcolor { get; set; } = "00f";
 
-    private void IncrementCount() => currentCount++;
+    private void IncrementCount() {
+        currentCount++;
+        bgcolor = ColorHelper.GetRandomColor().ToString();
+    }
 
     private void DateChange(){
-        bgcolor = "#fd7"; 
+        bgcolor = ColorHelper.GetRandomColor().ToString(); 
     }
 
 }
