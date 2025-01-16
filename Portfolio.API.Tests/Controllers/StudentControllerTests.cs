@@ -24,7 +24,7 @@ namespace Portfolio.API.Tests.Controllers
 				new(){LastName = "Smith", FirstName = "Jo"}
 			};
 
-			var mockDB = new Mock<IDbContext>();
+			var mockDB = new Mock<SqlDbContext>();
 			mockDB.Setup(d => d.GetCollection(typeof(Student))).Returns(dbStudents);
 
             var controller = new StudentController(mockDB.Object);
@@ -38,7 +38,7 @@ namespace Portfolio.API.Tests.Controllers
         public void GetStudents_TypeIsNotFound_ReturnsNotFound()
         {
             //Arrange
-            var mockDBContext = new Mock<IDbContext>();
+            var mockDBContext = new Mock<SqlDbContext>();
             mockDBContext.Setup(d => d.GetCollection(typeof(object))).Returns((IEnumerable<Student>)null);
 
             var controller = new StudentController(mockDBContext.Object);
