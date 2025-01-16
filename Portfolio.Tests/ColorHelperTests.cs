@@ -49,15 +49,5 @@ namespace Portfolio.Tests
             Assert.DoesNotThrow(() => ColorHelper.GetRandomColor());
         }
 
-        //[Test]
-        //public void GetRandomColor_CurrentColorSet_CannotReturnSameColor()
-        //{
-        //    //Arrange
-        //    //Act
-
-        //    //Assert
-        //    Assert.DoesNotThrow(() => ColorHelper.GetRandomColor());
-        //}
-
     }
 }
