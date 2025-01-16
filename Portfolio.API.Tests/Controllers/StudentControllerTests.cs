@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Moq;
+using NUnit.Framework;
 using Portfolio.API.Controllers;
 using Portfolio.API.Models;
 
@@ -24,10 +26,12 @@ namespace Portfolio.API.Tests.Controllers
 				new(){LastName = "Smith", FirstName = "Jo"}
 			};
 
-			var mockDB = new Mock<SqlDbContext>();
-			mockDB.Setup(d => d.GetCollection(typeof(Student))).Returns(dbStudents);
+            var mockStudentSet = new Mock<DbSet<Student>>(dbStudents);
+            
+            var mockTestContext = new Mock<SqlDbContext>();
+            mockTestContext.Setup(context => context.Students).Returns(mockStudentSet.Object);
 
-            var controller = new StudentController(mockDB.Object);
+            var controller = new StudentController(mockTestContext.Object);
             //Act
             var responseStudents = controller.Get();
 
@@ -38,10 +42,12 @@ namespace Portfolio.API.Tests.Controllers
         public void GetStudents_TypeIsNotFound_ReturnsNotFound()
         {
             //Arrange
-            var mockDBContext = new Mock<SqlDbContext>();
-            mockDBContext.Setup(d => d.GetCollection(typeof(object))).Returns((IEnumerable<Student>)null);
+            var mockStudentSet = new Mock<DbSet<Student>>();
 
-            var controller = new StudentController(mockDBContext.Object);
+            var mockTestContext = new Mock<SqlDbContext>();
+            mockTestContext.Setup(context => context.Students).Returns(mockStudentSet.Object);
+
+            var controller = new StudentController(mockTestContext.Object);
             //Act
             var response = controller.Get();
 

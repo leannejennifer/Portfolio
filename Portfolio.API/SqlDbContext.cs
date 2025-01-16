@@ -7,6 +7,10 @@ namespace Portfolio.API
     {
         public virtual DbSet<Student> Students { get; set; }
 
+        // makes the tests work but I think there is a better fix
+        public SqlDbContext() : base()
+        {
+        }
         public SqlDbContext(DbContextOptions<SqlDbContext> options) : base(options)
         {
         }
