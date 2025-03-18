@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -19,33 +20,29 @@ namespace Portfolio.API.Tests.Controllers
 		[Test]
 		public void GetStudents_FoundInDb_ReturnsFoundList()
 		{
-			//Arrange
-			var dbStudents = new List<Student>()
-			{
-				new(){LastName = "Rogers", FirstName = "Rachel"},
-				new(){LastName = "Smith", FirstName = "Jo"}
-			};
+            // Arrange
+            var mockDbContext = new Mock<IDbContext>(); // Assuming you have an IDbContext interface
+            var expectedStudents = new List<Student>
+            {
+                new() { StudentId = 1, FirstName = "Alice" },
+                new() { StudentId = 2, FirstName = "Bob" }
+            };
+            mockDbContext.Setup(db => db.GetCollection(typeof(Student))).Returns(expectedStudents);
 
-            var mockStudentSet = new Mock<DbSet<Student>>(dbStudents);
-            
-            var mockTestContext = new Mock<SqlDbContext>();
-            mockTestContext.Setup(context => context.Students).Returns(mockStudentSet.Object);
+            var controller = new StudentController(mockDbContext.Object);
 
-            var controller = new StudentController(mockTestContext.Object);
-            //Act
-            var responseStudents = controller.Get();
+            // Act
+            var result = controller.Get();
 
-			//Assert
-			Assert.That((responseStudents.Result as OkObjectResult).Value, Is.EquivalentTo(dbStudents));
-		}
+            // Assert
+			Assert.That((result.Result as OkObjectResult).Value, Is.EquivalentTo(expectedStudents));
+
+        }
         [Test]
         public void GetStudents_TypeIsNotFound_ReturnsNotFound()
         {
             //Arrange
-            var mockStudentSet = new Mock<DbSet<Student>>();
-
-            var mockTestContext = new Mock<SqlDbContext>();
-            mockTestContext.Setup(context => context.Students).Returns(mockStudentSet.Object);
+            var mockTestContext = new Mock<IDbContext>();
 
             var controller = new StudentController(mockTestContext.Object);
             //Act

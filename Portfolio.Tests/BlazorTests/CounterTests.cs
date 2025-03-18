@@ -27,7 +27,7 @@ namespace Portfolio.Tests.BlazorTests
 
             var button = cut.Find("button");
 
-            button.Attributes["style"]?.Value.MarkupMatches("background-color:#fd7");
+            button.Attributes["style"]?.Value.MarkupMatches("background-color:Pink");
         }
         [Test]
 

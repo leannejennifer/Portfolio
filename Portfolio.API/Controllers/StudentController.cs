@@ -6,7 +6,7 @@ namespace Portfolio.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class StudentController(SqlDbContext dbContext) : Controller
+    public class StudentController(IDbContext dbContext) : Controller
     {
         [HttpGet("GetStudents")]
         public ActionResult<IEnumerable<Student>> Get()
