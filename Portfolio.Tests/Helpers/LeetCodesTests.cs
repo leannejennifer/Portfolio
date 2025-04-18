@@ -27,11 +27,12 @@ namespace Portfolio.Tests.Helpers
         [TestCase("MCMXCIV", 1994)]
         public void ToRomanNumerals_Input_ExpectedOutcome(string input, int expectedOutput)
 		{
-			// Given I 
+            // Given I have a valid roman numeral
 
-			// When 
-
-			// Then 
+            // When call toRomanNumerals 
+            var result = LeetCodes.RomanToInt(input);
+            // Then I expect the output to be the numerical version
+            Assert.That(result, Is.EqualTo(expectedOutput));
 		}
 
 	}
