@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="LeetCodes\PalindromeNumberTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="bunit" Version="1.37.7" />
     <PackageReference Include="bunit.core" Version="1.37.7" />
     <PackageReference Include="bunit.web" Version="1.37.7" />
