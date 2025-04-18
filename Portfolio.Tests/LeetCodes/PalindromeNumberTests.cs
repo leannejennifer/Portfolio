@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Portfolio.LeetCodes;
-using NUnit;
-
-namespace Portfolio.Tests.LeetCodes
+﻿namespace Portfolio.Tests.LeetCodes
 {
 	[TestFixture]
     public class PalindromeNumberTests
@@ -20,10 +12,10 @@ namespace Portfolio.Tests.LeetCodes
         [TestCase(23455432, true)]
         public void Plaindrome_Input_ExpectedOutcome(int input, bool expectedOutput)
 		{
-			// Given I input a value
+            // Given I input a value
 
-			// When call Plaindrome
-			var output = PalindromeNumber.IsPalindrome(input);
+            // When call Plaindrome
+            var output = Helpers.LeetCodes.IsPalindrome(input);
 			// Then it should return the expected value
 			Assert.That(output, Is.EqualTo(expectedOutput), $"When input is {input} we expect the output to be {expectedOutput}");
 		}
