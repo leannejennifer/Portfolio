@@ -1,4 +1,6 @@
-﻿namespace Portfolio.Tests.LeetCodes
+﻿using Portfolio.Helpers;
+
+namespace Portfolio.Tests.Helpers
 {
 	[TestFixture]
     public class LeetCodesTests
@@ -15,9 +17,21 @@
             // Given I input a value
 
             // When call Plaindrome
-            var output = Helpers.LeetCodes.IsPalindrome(input);
+            var output = LeetCodes.IsPalindrome(input);
 			// Then it should return the expected value
 			Assert.That(output, Is.EqualTo(expectedOutput), $"When input is {input} we expect the output to be {expectedOutput}");
+		}
+
+        [TestCase("III", 3)]
+        [TestCase("LVIII", 58)]
+        [TestCase("MCMXCIV", 1994)]
+        public void ToRomanNumerals_Input_ExpectedOutcome(string input, int expectedOutput)
+		{
+			// Given I 
+
+			// When 
+
+			// Then 
 		}
 
 	}
