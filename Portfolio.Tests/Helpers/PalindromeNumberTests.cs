@@ -1,7 +1,7 @@
 ﻿namespace Portfolio.Tests.LeetCodes
 {
 	[TestFixture]
-    public class PalindromeNumberTests
+    public class LeetCodesTests
     {
 		[TestCase(121, true)]
         [TestCase(-121, false)]

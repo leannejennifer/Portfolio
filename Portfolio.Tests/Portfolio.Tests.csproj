@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="LeetCodes\PalindromeNumberTests.cs" />
+    <None Include="Helpers\PalindromeNumberTests.cs" />
   </ItemGroup>
 
   <ItemGroup>

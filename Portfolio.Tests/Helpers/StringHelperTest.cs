@@ -1,6 +1,6 @@
 ﻿using Portfolio.Helpers;
 
-namespace Portfolio.Tests
+namespace Portfolio.Tests.Helpers
 {
     [TestFixture]
     public class StringHelperTest

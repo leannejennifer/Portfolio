@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Portfolio.Helpers;
 
-namespace Portfolio.Tests
+namespace Portfolio.Tests.Helpers
 {
     [TestFixture]
     public class NumberHelperTest
@@ -15,15 +15,15 @@ namespace Portfolio.Tests
         [TestCase("1 9 3 4 -5", "9 -5")]
         [TestCase("1 9 3 40 -5", "40 -5")]
 
-		public void HighAndLow_InputListOfIntAsString_ReturnsHighestAndLowestNumber(string input, string output)
-		{
+        public void HighAndLow_InputListOfIntAsString_ReturnsHighestAndLowestNumber(string input, string output)
+        {
             //Arrange
 
             //Act
             var highAndLow = NumberHelper.HighAndLow(input);
             //Assert
             Assert.That(highAndLow, Is.EqualTo(output));
-		}
+        }
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
@@ -40,12 +40,12 @@ namespace Portfolio.Tests
             Assert.That(randomNumber, Is.LessThan(maxLimit));
         }
 
-        [TestCase(6,0)]
-        [TestCase(6,1)]
-        [TestCase(6,2)]
-        [TestCase(6,3)]
-        [TestCase(6,4)]
-        [TestCase(6,5)]
+        [TestCase(6, 0)]
+        [TestCase(6, 1)]
+        [TestCase(6, 2)]
+        [TestCase(6, 3)]
+        [TestCase(6, 4)]
+        [TestCase(6, 5)]
         public void GetRandomNumber_NoInput_DoesNotReturnPrevious(int maxLimit, int previousValue)
         {
             //Arrange

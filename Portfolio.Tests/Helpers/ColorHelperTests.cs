@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 using Portfolio.Enums;
 using Portfolio.Helpers;
 
-namespace Portfolio.Tests
+namespace Portfolio.Tests.Helpers
 {
     [TestFixture]
     public class ColorHelperTests
     {
-        [TestCase(0,Colors.Red)]
-        [TestCase(1,Colors.Blue)]
-        [TestCase(2,Colors.Yellow)]
-        [TestCase(3,Colors.Green)]
-        [TestCase(4,Colors.Pink)] 
-        [TestCase(5,Colors.Purple)] 
+        [TestCase(0, Colors.Red)]
+        [TestCase(1, Colors.Blue)]
+        [TestCase(2, Colors.Yellow)]
+        [TestCase(3, Colors.Green)]
+        [TestCase(4, Colors.Pink)]
+        [TestCase(5, Colors.Purple)]
         public void GetColorFromEnum_IndexExists_ReturnCorrectColor(int index, Colors expectedOutput)
-		{
+        {
             //Arrange
 
             //Act
@@ -42,7 +42,7 @@ namespace Portfolio.Tests
         public void GetRandomColor_NoInput_DoesNotThrowException()
         {
             //Arrange
-            
+
             //Act
 
             //Assert
