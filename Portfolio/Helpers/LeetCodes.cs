@@ -1,7 +1,10 @@
-﻿namespace Portfolio.Helpers
+﻿using System.Text;
+
+namespace Portfolio.Helpers
 {
     public static class LeetCodes
     {
+        #region 9. IsPalindrome
         // 9.
         public static bool IsPalindrome(int x)
         {
@@ -17,6 +20,8 @@
             }
             return true;
         }
+        #endregion
+        #region 13. Roman to int
 
         // 13.
         public static int RomanToInt(string s)
@@ -69,5 +74,29 @@
 
             return result;
         }
+        #endregion
+        #region 14. Longest Common Prefix
+        public static string LongestCommonPrefix(string[] strs)
+        {
+            var startingWord = strs[0];
+            StringBuilder sb = new();
+            for(var i = 0; i < startingWord.Length; i++)
+            { 
+                for(var j = 1; j < strs.Length; j++)
+                {
+                    var currentString = strs[j];
+                    if (currentString.Length <= i || currentString[i] != startingWord[i])
+                    {
+                        return sb.ToString();
+                    }
+                    
+                }
+                sb.Append(startingWord[i]);
+            
+            }
+
+            return sb.ToString();
+        }
+        #endregion
     }
 }

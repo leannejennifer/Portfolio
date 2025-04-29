@@ -2,10 +2,10 @@
 
 namespace Portfolio.Tests.Helpers
 {
-	[TestFixture]
+    [TestFixture]
     public class LeetCodesTests
     {
-		[TestCase(121, true)]
+        [TestCase(121, true)]
         [TestCase(-121, false)]
         [TestCase(10, false)]
         [TestCase(1001, true)]
@@ -13,27 +13,42 @@ namespace Portfolio.Tests.Helpers
         [TestCase(2345432, true)]
         [TestCase(23455432, true)]
         public void Plaindrome_Input_ExpectedOutcome(int input, bool expectedOutput)
-		{
+        {
             // Given I input a value
 
             // When call Plaindrome
             var output = LeetCodes.IsPalindrome(input);
-			// Then it should return the expected value
-			Assert.That(output, Is.EqualTo(expectedOutput), $"When input is {input} we expect the output to be {expectedOutput}");
-		}
+            // Then it should return the expected value
+            Assert.That(output, Is.EqualTo(expectedOutput), $"When input is {input} we expect the output to be {expectedOutput}");
+        }
 
         [TestCase("III", 3)]
         [TestCase("LVIII", 58)]
         [TestCase("MCMXCIV", 1994)]
         public void ToRomanNumerals_Input_ExpectedOutcome(string input, int expectedOutput)
-		{
+        {
             // Given I have a valid roman numeral
 
             // When call toRomanNumerals 
             var result = LeetCodes.RomanToInt(input);
             // Then I expect the output to be the numerical version
             Assert.That(result, Is.EqualTo(expectedOutput));
-		}
+        }
 
-	}
+        [TestCase(new string[]{"flow", "flow"}, "flow")]
+        [TestCase(new string[]{"flower", "flow", "flight"}, "fl")]
+        [TestCase(new string[]{"dog", "racecar", "car"}, "")]
+        [TestCase(new string[]{ "ab", "a"}, "a")]
+        public void LongestCommonPrefix_Input_ExpectedOutcome(string[] input, string expectedOutput)
+        {
+            // Given I have an array of strings
+
+            // When call LongestCommonPrefix 
+            var result = LeetCodes.LongestCommonPrefix(input);
+
+            // Then I expect the output to be the longest common prefix
+            Assert.That(result, Is.EqualTo(expectedOutput));
+        }
+
+    }
 }
