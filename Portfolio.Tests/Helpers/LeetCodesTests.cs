@@ -95,5 +95,17 @@ namespace Portfolio.Tests.Helpers
             // Then I should get the length of the last word
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
+        [TestCase(new int[] { 1, 2, 3 }, new int[] { 1, 2, 4 })]
+        [TestCase(new int[] { 4, 3, 2, 1 }, new int[] { 4, 3, 2, 2 })]
+        [TestCase(new int[] { 9 }, new int[] { 1, 0 })]
+        [TestCase(new int[]{9,8,7,6,5,4,3,2,1,0},new int[]{9,8,7,6,5,4,3,2,1,1})]
+        public void PlusOne_Input_ExpectedOutput(int[] input, int[] expectedOutput)
+        {
+            // When I call PlusOne
+            var result = LeetCodes.PlusOne(input);
+
+            // Then I should get the incremented array
+            Assert.That(result, Is.EqualTo(expectedOutput));
+        }
     }
 }

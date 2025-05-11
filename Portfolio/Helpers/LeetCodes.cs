@@ -103,6 +103,36 @@ namespace Portfolio.Helpers
             return s.Trim().Split(" ")[^1].Length;
         }
         #endregion
+        #region 66. Plus one
+        public static int[] PlusOne(int[] digits) {
+            
+            var resultDigits = new List<int>();
+            int addOne = 1;
+
+            for(int i = digits.Length - 1; i > - 1; i--)
+            {
+                var result = digits[i] + addOne;
+
+                if(result > 9)
+                {
+                    resultDigits.Insert(0, result - 10);
+                    addOne = 1;
+
+                    if(i == 0)
+                    {
+                        resultDigits.Insert(0, 1);
+                    }
+                }
+                else
+                {
+                    resultDigits.Insert(0, result);
+                    addOne = 0;
+                }
+            }
+            return resultDigits.ToArray();
+       
+        }
+        #endregion
         #region 557. Reverse Words in a String III
         public static string ReverseWords(string s) {
             
