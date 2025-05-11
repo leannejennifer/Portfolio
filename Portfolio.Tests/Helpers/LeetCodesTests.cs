@@ -84,5 +84,16 @@ namespace Portfolio.Tests.Helpers
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
         
+        [TestCase("Hello World", 5)]
+        [TestCase("   fly me   to   the moon  ", 4)]
+        [TestCase("luffy is still joyboy", 6)]
+        public void LengthOfLastWord_Input_ExpectedOutcome(string input, int expectedOutput)
+        {
+            // When I call LengthOfLastWord
+            var result = LeetCodes.LengthOfLastWord(input);
+
+            // Then I should get the length of the last word
+            Assert.That(result, Is.EqualTo(expectedOutput));
+        }
     }
 }

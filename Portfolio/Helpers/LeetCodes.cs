@@ -98,6 +98,11 @@ namespace Portfolio.Helpers
             return sb.ToString();
         }
         #endregion
+        #region 58. Length of Last Word
+        public static int LengthOfLastWord(string s) {
+            return s.Trim().Split(" ")[^1].Length;
+        }
+        #endregion
         #region 557. Reverse Words in a String III
         public static string ReverseWords(string s) {
             
@@ -131,12 +136,12 @@ namespace Portfolio.Helpers
             return result;
         }
         #endregion
-
         #region 3065. Minimum Operations to Exceed Threshold Value I
         public static int MinOperations(int[] nums, int k) {
             
             return nums.Count(d => d < k);
         }
         #endregion 
+
     }
 }
