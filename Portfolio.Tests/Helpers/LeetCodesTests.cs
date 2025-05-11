@@ -50,5 +50,15 @@ namespace Portfolio.Tests.Helpers
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
 
+        [TestCase("Let's take LeetCode contest","s'teL ekat edoCteeL tsetnoc")]
+        [TestCase("Mr Ding","rM gniD")]
+        public void ReverseWords_Input_expectedOutcome(string input, string expectedOutput)
+        {
+            // When I call ReverseWords
+            var result = LeetCodes.ReverseWords(input);
+
+            // Then I should get the reversed string output
+            Assert.That(result, Is.EqualTo(expectedOutput));
+        }
     }
 }

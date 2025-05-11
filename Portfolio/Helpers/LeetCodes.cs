@@ -98,5 +98,27 @@ namespace Portfolio.Helpers
             return sb.ToString();
         }
         #endregion
+        #region 557. Reverse Words in a String III
+        public static string ReverseWords(string s) {
+            
+            StringBuilder sb = new();
+
+            var words = s.Split( );
+            foreach (var (word, index) in words.Select((word, index) => (word, index)))
+            {
+                for (var i = word.Length - 1; i > -1; i--)
+                {
+                    sb.Append(word[i]);
+                }
+                if (index < words.Length - 1)
+                {
+                    sb.Append(' ');
+                }
+            }
+
+            return sb.ToString();
+        }
+        #endregion
+        
     }
 }
