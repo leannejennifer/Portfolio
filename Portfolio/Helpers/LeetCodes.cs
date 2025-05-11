@@ -154,6 +154,18 @@ namespace Portfolio.Helpers
             return sb.ToString();
         }
         #endregion
+        #region 1295. Find Numbers with Even Number of Digits
+        public static int FindNumbers(int[] nums) {
+            var a = 0;
+
+            foreach(var num in nums)
+            {
+                if (num.ToString().Length % 2 == 0)
+                a++;
+            }
+            return a;
+        }
+        #endregion
         #region 3110. Score of a string
         public static int ScoreOfString(string s) {
             int result = 0;

@@ -107,5 +107,17 @@ namespace Portfolio.Tests.Helpers
             // Then I should get the incremented array
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new int[]{12,345,2,6,7896},2)]
+        [TestCase(new int[]{555,901,482,1771},1)]
+        public void FindNumbers_Input_ExpectedOutput(int[] input, int expectedOutput)
+        {
+            // When I call FindNumbers
+            var result = LeetCodes.FindNumbers(input);
+
+            // Then I should get a count of the integers with an even number of digits
+            Assert.That(result, Is.EqualTo(expectedOutput));
+
+        }
     }
 }
