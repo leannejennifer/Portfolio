@@ -60,5 +60,15 @@ namespace Portfolio.Tests.Helpers
             // Then I should get the reversed string output
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
+        [TestCase("hello",13)]
+        [TestCase("zaz",50)]
+        public void ScoreOfString_Input_expectedOutcome(string input, int expectedOutput)
+        {
+            // When I call ReverseWords
+            var result = LeetCodes.ScoreOfString(input);
+
+            // Then I should get the reversed string output
+            Assert.That(result, Is.EqualTo(expectedOutput));
+        }
     }
 }

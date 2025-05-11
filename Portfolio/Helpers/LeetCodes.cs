@@ -119,6 +119,17 @@ namespace Portfolio.Helpers
             return sb.ToString();
         }
         #endregion
-        
+        #region 3110. Score of a string
+        public static int ScoreOfString(string s) {
+            int result = 0;
+            for(var i = 1; i < s.Length; i++)
+            {
+                int prevVal = s[i-1];
+                result += Math.Abs(prevVal - s[i]);
+            }
+
+            return result;
+        }
+        #endregion
     }
 }
