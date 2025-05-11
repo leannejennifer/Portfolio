@@ -131,5 +131,12 @@ namespace Portfolio.Helpers
             return result;
         }
         #endregion
+
+        #region 3065. Minimum Operations to Exceed Threshold Value I
+        public static int MinOperations(int[] nums, int k) {
+            
+            return nums.Count(d => d < k);
+        }
+        #endregion 
     }
 }

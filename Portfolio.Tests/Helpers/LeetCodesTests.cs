@@ -70,5 +70,19 @@ namespace Portfolio.Tests.Helpers
             // Then I should get the reversed string output
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new int[]{2,11,10,1,3}, 10, 3)]
+        [TestCase(new int[]{1,1,2,4,9}, 1, 0)]
+        [TestCase(new int[]{1,1,2,4,9}, 9, 4)]
+        [TestCase(new int[]{69,89,57,31,84,97,50,38,91}, 69, 4)]
+        public void MinOperations_Input_expectedOutcome(int[] input, int k, int expectedOutput)
+        {
+            // When I call ReverseWords
+            var result = LeetCodes.MinOperations(input, k);
+
+            // Then I should get the reversed string output
+            Assert.That(result, Is.EqualTo(expectedOutput));
+        }
+        
     }
 }
