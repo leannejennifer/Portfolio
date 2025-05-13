@@ -185,5 +185,100 @@ namespace Portfolio.Helpers
         }
         #endregion 
 
+// from before 
+       #region 1. Two Sum
+/// <summary>
+/// Returns the indexes of the integers in the array that add up to the target.
+/// Has exactly one solution.
+/// Cannot use the same element twice.
+/// <paramref name="nums">Array of integers.</paramref>
+/// <paramref name="target">Target value</paramref>
+/// </summary>
+public static int[] TwoSum(int[] nums, int target)
+{
+    for (int i = 0; i < nums.Length - 1; i++)
+    {
+        for (int j = i + 1; j < nums.Length; j++)
+        {
+            var value = nums[i] + nums[j];
+            if (value == target)
+            {
+                return [i, j];
+            }
+        }
+    }
+
+    throw new InvalidDataException();
+}
+
+#endregion
+#region 2. Add Two Numbers
+
+/// <summary>
+/// Given two non empty, non-negative, single digit ListNodes 
+/// </summary>
+/// <param name="l1"></param>
+/// <param name="l2"></param>
+public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+{
+    var currentL1 = l1;
+    var currentL2 = l2;
+    ListNode output = new();
+    var doubleFigures = 0;
+
+    while (currentL1 != null && currentL2 != null)
+    {
+        var result = currentL1.val + currentL2.val + doubleFigures;
+
+
+        output = new ListNode(result, output);
+
+        currentL1 = currentL1.next;
+        currentL2 = currentL2.next;
+    }
+
+    return output;
+}
+
+#endregion
+#region 20. Valid Parentheses
+public static bool ValidParentheses(string input)
+{
+    // Open brackets must be closed by the same type of brackets.
+    // Open brackets must be closed in the correct order.
+    // Every close bracket has a corresponding open bracket of the same type.
+
+    List<char> chrs = [];
+
+    foreach (var c in input)
+    {
+        if (c == '(' || c == '{' || c == '[')
+        {
+            chrs.Add(c);
+        }
+        else
+        {
+            if (chrs.Count == 0 || !MatchPrevious(c, chrs[^1]))
+                return false;
+            else
+                chrs.RemoveAt(chrs.Count - 1);
+        }
+    }
+
+    return chrs.Count == 0;
+}
+
+private static bool MatchPrevious(char c, char previousC)
+{
+    return c switch
+    {
+        '}' => previousC == '{',
+        ')' => previousC == '(',
+        ']' => previousC == '[',
+        _ => false,
+    };
+}
+#endregion     
+            
     }
 }
