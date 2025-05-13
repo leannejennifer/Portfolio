@@ -186,5 +186,17 @@ namespace Portfolio.Tests.Helpers
             Assert.That(LeetCodes.ValidParentheses(input), Is.EqualTo(expectedValue), $"{input} is{(expectedValue ? "" : " not")} complete.");
         }
         #endregion
+        
+        [TestCase(10,3,3)]
+        [TestCase(7,-3,-2)]
+        [TestCase(-2147483648,-1,2147483647)]
+        public void Divide_Input_ExpectedOutput(int dividend, int divisor, int expectedOutput)
+        {
+            // When I call Divide
+            var result = LeetCodes.Divide(dividend, divisor);
+            
+            // Then it should return the quotient
+            Assert.That(result, Is.EqualTo(expectedOutput));
+        }
     }
 }

@@ -163,6 +163,20 @@ namespace Portfolio.Helpers
             };
         }
         #endregion
+        #region 29. Divide Two Integers
+        public static int Divide(int dividend, int divisor)
+        {
+            Int64 result = (Int64)dividend/(Int64)divisor;
+
+            if(result > int.MaxValue)
+                return int.MaxValue;
+
+            if(result < int.MinValue)
+                return int.MinValue;
+
+            return (int)result;
+        }
+        #endregion
         #region 58. Length of Last Word
         public static int LengthOfLastWord(string s)
         {
