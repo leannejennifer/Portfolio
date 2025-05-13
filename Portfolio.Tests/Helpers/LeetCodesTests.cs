@@ -119,5 +119,71 @@ namespace Portfolio.Tests.Helpers
             Assert.That(result, Is.EqualTo(expectedOutput));
 
         }
+
+        //from work
+        #region 1. TwoSum
+[TestCase(new int[] { 2, 7, 11, 15 }, 9, new int[] { 0, 1 })]
+[TestCase(new int[] { 3, 2, 4 }, 7, new int[] { 0, 2 })]
+[TestCase(new int[] { 3, 2, 4 }, 6, new int[] { 1, 2 })]
+[TestCase(new int[] { 3, 3 }, 6, new int[] { 0, 1 })]
+public void TwoSum_ReturnsCorrectIntArray(int[] input, int target, int[] expectedOutput)
+{
+    // Given I have an array of integers
+
+    // When I call TwoSum 
+    var output = LeetCodeChallenges.TwoSum(input, target);
+
+    // Then the two indexes of the numbers that add up to the target are returned
+    Assert.That(output, Is.EqualTo(expectedOutput));
+}
+#endregion
+
+#region 2. Add two numbers
+[Ignore("Leaving this challenge for today")]
+[Test]//Case([2,4,3], [5,6,4])]
+public void AddTwoNumbers_ReturnsInReverseOrder()//ListNode l1, ListNode l2)
+{
+    // Given I have two linked list nodes 
+
+    // 243
+    ListNode l1 = new(2, new(4, new(3)));
+    // 564
+    ListNode l2 = new(5, new(6, new(4)));
+    // 807
+    ListNode l3c = new(7, new(0, new(8)));
+
+    // When I call AddTwoNumbers
+    var output = LeetCodeChallenges.AddTwoNumbers(l1, l2);
+
+    // Then I should get the expected output
+    Assert.That(output, Is.EqualTo(l3c));
+}
+
+#endregion
+
+#region 20. Valid Parentheses
+[TestCase("()", true)]
+[TestCase("[]", true)]
+[TestCase("{[]}", true)]
+[TestCase("{[{}]}", true)]
+[TestCase("()[]{}", true)]
+[TestCase("((()))", true)]
+[TestCase("([])", true)]
+[TestCase("{([])}", true)]
+[TestCase("{(])}", false)]
+[TestCase("{(})}", false)]
+[TestCase("(((", false)]
+[TestCase("((()", false)]
+[TestCase("()))", false)]
+public void ValidParentheses_ReturnsExpectedValue(string input, bool expectedValue)
+{
+    // Given I have a string of parentheses
+
+    // When I call ValidParentheses
+
+    // Then I should get the expected value
+    Assert.That(LeetCodeChallenges.ValidParentheses(input), Is.EqualTo(expectedValue), $"{input} is{(expectedValue ? "" : " not")} complete.");
+}
+#endregion
     }
 }
