@@ -1,4 +1,4 @@
-namespace LeetCode.Models
+namespace Portfolio.Models
 {
     public class ListNode(int val = 0, ListNode next = null)
     {

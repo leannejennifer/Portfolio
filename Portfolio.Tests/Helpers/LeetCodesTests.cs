@@ -1,4 +1,5 @@
 ﻿using Portfolio.Helpers;
+using Portfolio.Models;
 
 namespace Portfolio.Tests.Helpers
 {
@@ -35,10 +36,10 @@ namespace Portfolio.Tests.Helpers
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
 
-        [TestCase(new string[]{"flow", "flow"}, "flow")]
-        [TestCase(new string[]{"flower", "flow", "flight"}, "fl")]
-        [TestCase(new string[]{"dog", "racecar", "car"}, "")]
-        [TestCase(new string[]{ "ab", "a"}, "a")]
+        [TestCase(new string[] { "flow", "flow" }, "flow")]
+        [TestCase(new string[] { "flower", "flow", "flight" }, "fl")]
+        [TestCase(new string[] { "dog", "racecar", "car" }, "")]
+        [TestCase(new string[] { "ab", "a" }, "a")]
         public void LongestCommonPrefix_Input_ExpectedOutcome(string[] input, string expectedOutput)
         {
             // Given I have an array of strings
@@ -50,8 +51,8 @@ namespace Portfolio.Tests.Helpers
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
 
-        [TestCase("Let's take LeetCode contest","s'teL ekat edoCteeL tsetnoc")]
-        [TestCase("Mr Ding","rM gniD")]
+        [TestCase("Let's take LeetCode contest", "s'teL ekat edoCteeL tsetnoc")]
+        [TestCase("Mr Ding", "rM gniD")]
         public void ReverseWords_Input_expectedOutcome(string input, string expectedOutput)
         {
             // When I call ReverseWords
@@ -60,8 +61,8 @@ namespace Portfolio.Tests.Helpers
             // Then I should get the reversed string output
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
-        [TestCase("hello",13)]
-        [TestCase("zaz",50)]
+        [TestCase("hello", 13)]
+        [TestCase("zaz", 50)]
         public void ScoreOfString_Input_expectedOutcome(string input, int expectedOutput)
         {
             // When I call ReverseWords
@@ -71,10 +72,10 @@ namespace Portfolio.Tests.Helpers
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
 
-        [TestCase(new int[]{2,11,10,1,3}, 10, 3)]
-        [TestCase(new int[]{1,1,2,4,9}, 1, 0)]
-        [TestCase(new int[]{1,1,2,4,9}, 9, 4)]
-        [TestCase(new int[]{69,89,57,31,84,97,50,38,91}, 69, 4)]
+        [TestCase(new int[] { 2, 11, 10, 1, 3 }, 10, 3)]
+        [TestCase(new int[] { 1, 1, 2, 4, 9 }, 1, 0)]
+        [TestCase(new int[] { 1, 1, 2, 4, 9 }, 9, 4)]
+        [TestCase(new int[] { 69, 89, 57, 31, 84, 97, 50, 38, 91 }, 69, 4)]
         public void MinOperations_Input_expectedOutcome(int[] input, int k, int expectedOutput)
         {
             // When I call ReverseWords
@@ -83,7 +84,7 @@ namespace Portfolio.Tests.Helpers
             // Then I should get the reversed string output
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
-        
+
         [TestCase("Hello World", 5)]
         [TestCase("   fly me   to   the moon  ", 4)]
         [TestCase("luffy is still joyboy", 6)]
@@ -98,7 +99,7 @@ namespace Portfolio.Tests.Helpers
         [TestCase(new int[] { 1, 2, 3 }, new int[] { 1, 2, 4 })]
         [TestCase(new int[] { 4, 3, 2, 1 }, new int[] { 4, 3, 2, 2 })]
         [TestCase(new int[] { 9 }, new int[] { 1, 0 })]
-        [TestCase(new int[]{9,8,7,6,5,4,3,2,1,0},new int[]{9,8,7,6,5,4,3,2,1,1})]
+        [TestCase(new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 }, new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 1 })]
         public void PlusOne_Input_ExpectedOutput(int[] input, int[] expectedOutput)
         {
             // When I call PlusOne
@@ -108,8 +109,8 @@ namespace Portfolio.Tests.Helpers
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
 
-        [TestCase(new int[]{12,345,2,6,7896},2)]
-        [TestCase(new int[]{555,901,482,1771},1)]
+        [TestCase(new int[] { 12, 345, 2, 6, 7896 }, 2)]
+        [TestCase(new int[] { 555, 901, 482, 1771 }, 1)]
         public void FindNumbers_Input_ExpectedOutput(int[] input, int expectedOutput)
         {
             // When I call FindNumbers
@@ -122,68 +123,68 @@ namespace Portfolio.Tests.Helpers
 
         //from work
         #region 1. TwoSum
-[TestCase(new int[] { 2, 7, 11, 15 }, 9, new int[] { 0, 1 })]
-[TestCase(new int[] { 3, 2, 4 }, 7, new int[] { 0, 2 })]
-[TestCase(new int[] { 3, 2, 4 }, 6, new int[] { 1, 2 })]
-[TestCase(new int[] { 3, 3 }, 6, new int[] { 0, 1 })]
-public void TwoSum_ReturnsCorrectIntArray(int[] input, int target, int[] expectedOutput)
-{
-    // Given I have an array of integers
+        [TestCase(new int[] { 2, 7, 11, 15 }, 9, new int[] { 0, 1 })]
+        [TestCase(new int[] { 3, 2, 4 }, 7, new int[] { 0, 2 })]
+        [TestCase(new int[] { 3, 2, 4 }, 6, new int[] { 1, 2 })]
+        [TestCase(new int[] { 3, 3 }, 6, new int[] { 0, 1 })]
+        public void TwoSum_ReturnsCorrectIntArray(int[] input, int target, int[] expectedOutput)
+        {
+            // Given I have an array of integers
 
-    // When I call TwoSum 
-    var output = LeetCodeChallenges.TwoSum(input, target);
+            // When I call TwoSum 
+            var output = LeetCodes.TwoSum(input, target);
 
-    // Then the two indexes of the numbers that add up to the target are returned
-    Assert.That(output, Is.EqualTo(expectedOutput));
-}
-#endregion
+            // Then the two indexes of the numbers that add up to the target are returned
+            Assert.That(output, Is.EqualTo(expectedOutput));
+        }
+        #endregion
 
-#region 2. Add two numbers
-[Ignore("Leaving this challenge for today")]
-[Test]//Case([2,4,3], [5,6,4])]
-public void AddTwoNumbers_ReturnsInReverseOrder()//ListNode l1, ListNode l2)
-{
-    // Given I have two linked list nodes 
+        #region 2. Add two numbers
+        [Ignore("Leaving this challenge for today")]
+        [Test]//Case([2,4,3], [5,6,4])]
+        public void AddTwoNumbers_ReturnsInReverseOrder()//ListNode l1, ListNode l2)
+        {
+            // Given I have two linked list nodes 
 
-    // 243
-    ListNode l1 = new(2, new(4, new(3)));
-    // 564
-    ListNode l2 = new(5, new(6, new(4)));
-    // 807
-    ListNode l3c = new(7, new(0, new(8)));
+            // 243
+            ListNode l1 = new(2, new(4, new(3)));
+            // 564
+            ListNode l2 = new(5, new(6, new(4)));
+            // 807
+            ListNode l3c = new(7, new(0, new(8)));
 
-    // When I call AddTwoNumbers
-    var output = LeetCodeChallenges.AddTwoNumbers(l1, l2);
+            // When I call AddTwoNumbers
+            var output = LeetCodes.AddTwoNumbers(l1, l2);
 
-    // Then I should get the expected output
-    Assert.That(output, Is.EqualTo(l3c));
-}
+            // Then I should get the expected output
+            Assert.That(output, Is.EqualTo(l3c));
+        }
 
-#endregion
+        #endregion
 
-#region 20. Valid Parentheses
-[TestCase("()", true)]
-[TestCase("[]", true)]
-[TestCase("{[]}", true)]
-[TestCase("{[{}]}", true)]
-[TestCase("()[]{}", true)]
-[TestCase("((()))", true)]
-[TestCase("([])", true)]
-[TestCase("{([])}", true)]
-[TestCase("{(])}", false)]
-[TestCase("{(})}", false)]
-[TestCase("(((", false)]
-[TestCase("((()", false)]
-[TestCase("()))", false)]
-public void ValidParentheses_ReturnsExpectedValue(string input, bool expectedValue)
-{
-    // Given I have a string of parentheses
+        #region 20. Valid Parentheses
+        [TestCase("()", true)]
+        [TestCase("[]", true)]
+        [TestCase("{[]}", true)]
+        [TestCase("{[{}]}", true)]
+        [TestCase("()[]{}", true)]
+        [TestCase("((()))", true)]
+        [TestCase("([])", true)]
+        [TestCase("{([])}", true)]
+        [TestCase("{(])}", false)]
+        [TestCase("{(})}", false)]
+        [TestCase("(((", false)]
+        [TestCase("((()", false)]
+        [TestCase("()))", false)]
+        public void ValidParentheses_ReturnsExpectedValue(string input, bool expectedValue)
+        {
+            // Given I have a string of parentheses
 
-    // When I call ValidParentheses
+            // When I call ValidParentheses
 
-    // Then I should get the expected value
-    Assert.That(LeetCodeChallenges.ValidParentheses(input), Is.EqualTo(expectedValue), $"{input} is{(expectedValue ? "" : " not")} complete.");
-}
-#endregion
+            // Then I should get the expected value
+            Assert.That(LeetCodes.ValidParentheses(input), Is.EqualTo(expectedValue), $"{input} is{(expectedValue ? "" : " not")} complete.");
+        }
+        #endregion
     }
 }
