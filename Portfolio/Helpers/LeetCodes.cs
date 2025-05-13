@@ -163,6 +163,23 @@ namespace Portfolio.Helpers
             };
         }
         #endregion
+        #region 28. Find the Index of the First Occurrence in a String
+        public static int StrStr(string haystack, string needle) 
+        {
+            for(var i = 0; i < haystack.Length - needle.Length + 1; i++)
+            {
+                if(haystack[i] == needle[0])
+                {
+                    if(haystack.Substring(i, needle.Length) == needle)
+                    {
+                        return i;
+                    }
+                }
+            }
+
+            return -1;
+        }
+        #endregion
         #region 29. Divide Two Integers
         public static int Divide(int dividend, int divisor)
         {

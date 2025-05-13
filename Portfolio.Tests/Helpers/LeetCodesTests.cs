@@ -198,5 +198,18 @@ namespace Portfolio.Tests.Helpers
             // Then it should return the quotient
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
+
+        [TestCase("sadbutsad", "sad", 0)]
+        [TestCase("leetcode", "leet", 0)]
+        [TestCase("leecoldeleetleeto", "leeto", 12)]
+        public void StrStr_Input_ExpectedOutput(string haystack, string needle, int expectedOutput)
+        {
+            // When I call StrStr
+            var result = LeetCodes.StrStr(haystack,needle);
+            // Then it will return the first index of needle
+
+            Assert.That(result, Is.EqualTo(expectedOutput));
+        }
+
     }
 }
