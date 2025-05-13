@@ -1,9 +1,36 @@
 ﻿using System.Text;
+using Portfolio.Models;
 
 namespace Portfolio.Helpers
 {
     public static class LeetCodes
     {
+        #region 1. Two Sum
+        /// <summary>
+        /// Returns the indexes of the integers in the array that add up to the target.
+        /// Has exactly one solution.
+        /// Cannot use the same element twice.
+        /// <paramref name="nums">Array of integers.</paramref>
+        /// <paramref name="target">Target value</paramref>
+        /// </summary>
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            for (int i = 0; i < nums.Length - 1; i++)
+            {
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    var value = nums[i] + nums[j];
+                    if (value == target)
+                    {
+                        return [i, j];
+                    }
+                }
+            }
+
+            throw new InvalidDataException();
+        }
+
+        #endregion
         #region 9. IsPalindrome
         // 9.
         public static bool IsPalindrome(int x)
@@ -51,7 +78,7 @@ namespace Portfolio.Helpers
                         result++;
                         break;
                     case 'V':
-                        result += prev == 'I' ? 3: 5;
+                        result += prev == 'I' ? 3 : 5;
                         break;
                     case 'X':
                         result += prev == 'I' ? 8 : 10;
@@ -80,45 +107,85 @@ namespace Portfolio.Helpers
         {
             var startingWord = strs[0];
             StringBuilder sb = new();
-            for(var i = 0; i < startingWord.Length; i++)
-            { 
-                for(var j = 1; j < strs.Length; j++)
+            for (var i = 0; i < startingWord.Length; i++)
+            {
+                for (var j = 1; j < strs.Length; j++)
                 {
                     var currentString = strs[j];
                     if (currentString.Length <= i || currentString[i] != startingWord[i])
                     {
                         return sb.ToString();
                     }
-                    
+
                 }
                 sb.Append(startingWord[i]);
-            
+
             }
 
             return sb.ToString();
         }
         #endregion
+        #region 20. Valid Parentheses
+        public static bool ValidParentheses(string input)
+        {
+            // Open brackets must be closed by the same type of brackets.
+            // Open brackets must be closed in the correct order.
+            // Every close bracket has a corresponding open bracket of the same type.
+
+            List<char> chrs = [];
+
+            foreach (var c in input)
+            {
+                if (c == '(' || c == '{' || c == '[')
+                {
+                    chrs.Add(c);
+                }
+                else
+                {
+                    if (chrs.Count == 0 || !MatchPrevious(c, chrs[^1]))
+                        return false;
+                    else
+                        chrs.RemoveAt(chrs.Count - 1);
+                }
+            }
+
+            return chrs.Count == 0;
+        }
+
+        private static bool MatchPrevious(char c, char previousC)
+        {
+            return c switch
+            {
+                '}' => previousC == '{',
+                ')' => previousC == '(',
+                ']' => previousC == '[',
+                _ => false,
+            };
+        }
+        #endregion
         #region 58. Length of Last Word
-        public static int LengthOfLastWord(string s) {
+        public static int LengthOfLastWord(string s)
+        {
             return s.Trim().Split(" ")[^1].Length;
         }
         #endregion
         #region 66. Plus one
-        public static int[] PlusOne(int[] digits) {
-            
+        public static int[] PlusOne(int[] digits)
+        {
+
             var resultDigits = new List<int>();
             int addOne = 1;
 
-            for(int i = digits.Length - 1; i > - 1; i--)
+            for (int i = digits.Length - 1; i > -1; i--)
             {
                 var result = digits[i] + addOne;
 
-                if(result > 9)
+                if (result > 9)
                 {
                     resultDigits.Insert(0, result - 10);
                     addOne = 1;
 
-                    if(i == 0)
+                    if (i == 0)
                     {
                         resultDigits.Insert(0, 1);
                     }
@@ -130,15 +197,16 @@ namespace Portfolio.Helpers
                 }
             }
             return resultDigits.ToArray();
-       
+
         }
         #endregion
         #region 557. Reverse Words in a String III
-        public static string ReverseWords(string s) {
-            
+        public static string ReverseWords(string s)
+        {
+
             StringBuilder sb = new();
 
-            var words = s.Split( );
+            var words = s.Split();
             foreach (var (word, index) in words.Select((word, index) => (word, index)))
             {
                 for (var i = word.Length - 1; i > -1; i--)
@@ -155,23 +223,25 @@ namespace Portfolio.Helpers
         }
         #endregion
         #region 1295. Find Numbers with Even Number of Digits
-        public static int FindNumbers(int[] nums) {
+        public static int FindNumbers(int[] nums)
+        {
             var a = 0;
 
-            foreach(var num in nums)
+            foreach (var num in nums)
             {
                 if (num.ToString().Length % 2 == 0)
-                a++;
+                    a++;
             }
             return a;
         }
         #endregion
         #region 3110. Score of a string
-        public static int ScoreOfString(string s) {
+        public static int ScoreOfString(string s)
+        {
             int result = 0;
-            for(var i = 1; i < s.Length; i++)
+            for (var i = 1; i < s.Length; i++)
             {
-                int prevVal = s[i-1];
+                int prevVal = s[i - 1];
                 result += Math.Abs(prevVal - s[i]);
             }
 
@@ -179,11 +249,44 @@ namespace Portfolio.Helpers
         }
         #endregion
         #region 3065. Minimum Operations to Exceed Threshold Value I
-        public static int MinOperations(int[] nums, int k) {
-            
+        public static int MinOperations(int[] nums, int k)
+        {
+
             return nums.Count(d => d < k);
         }
-        #endregion 
+        #endregion
 
+        // from before 
+
+        #region WIP: 2. Add Two Numbers
+
+        /// <summary>
+        /// Given two non empty, non-negative, single digit ListNodes 
+        /// </summary>
+        /// <param name="l1"></param>
+        /// <param name="l2"></param>
+        public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        {
+            var currentL1 = l1;
+            var currentL2 = l2;
+            ListNode output = new();
+            var doubleFigures = 0;
+
+            while (currentL1 != null && currentL2 != null)
+            {
+                var result = currentL1.val + currentL2.val + doubleFigures;
+
+
+                output = new ListNode(result, output);
+
+                currentL1 = currentL1.next;
+                currentL2 = currentL2.next;
+            }
+
+            return output;
+        }
+
+        #endregion
+        
     }
 }
