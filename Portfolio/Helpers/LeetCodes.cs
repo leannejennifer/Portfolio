@@ -194,6 +194,24 @@ namespace Portfolio.Helpers
             return (int)result;
         }
         #endregion
+        #region 35. Search Insert Position
+        public static int SearchInsert(int[] nums, int target) {
+            if(nums[0] >= target)
+                return 0;
+
+            for(var i = 0; i < nums.Length; i++)
+            {
+                if(nums[i] < target)
+                {
+                    continue;
+                }
+                
+                return i;
+            }
+
+            return nums.Length;
+        }
+        #endregion
         #region 58. Length of Last Word
         public static int LengthOfLastWord(string s)
         {

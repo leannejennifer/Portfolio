@@ -211,5 +211,16 @@ namespace Portfolio.Tests.Helpers
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
 
+        [TestCase(new int[]{1,3,5,6}, 5, 2)]
+        [TestCase(new int[]{1,3,5,6}, 2, 1)]
+        [TestCase(new int[]{1,3,5,6}, 7, 4)]
+        [TestCase(new int[]{1,3,5,6}, 5, 2)]
+        [TestCase(new int[]{1}, 0, 0)]
+        [TestCase(new int[]{1}, 1, 0)]
+        [TestCase(new int[]{1,3}, 2, 1)]
+        public void SearchInsert_Input_ExpectedOutput(int[] input, int target, int expectedOutput)
+        {
+            Assert.That(LeetCodes.SearchInsert(input,target), Is.EqualTo(expectedOutput));
+        }
     }
 }
