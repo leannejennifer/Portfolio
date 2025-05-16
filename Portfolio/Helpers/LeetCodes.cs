@@ -164,13 +164,13 @@ namespace Portfolio.Helpers
         }
         #endregion
         #region 28. Find the Index of the First Occurrence in a String
-        public static int StrStr(string haystack, string needle) 
+        public static int StrStr(string haystack, string needle)
         {
-            for(var i = 0; i < haystack.Length - needle.Length + 1; i++)
+            for (var i = 0; i < haystack.Length - needle.Length + 1; i++)
             {
-                if(haystack[i] == needle[0])
+                if (haystack[i] == needle[0])
                 {
-                    if(haystack.Substring(i, needle.Length) == needle)
+                    if (haystack.Substring(i, needle.Length) == needle)
                     {
                         return i;
                     }
@@ -183,29 +183,30 @@ namespace Portfolio.Helpers
         #region 29. Divide Two Integers
         public static int Divide(int dividend, int divisor)
         {
-            Int64 result = (Int64)dividend/(Int64)divisor;
+            Int64 result = (Int64)dividend / (Int64)divisor;
 
-            if(result > int.MaxValue)
+            if (result > int.MaxValue)
                 return int.MaxValue;
 
-            if(result < int.MinValue)
+            if (result < int.MinValue)
                 return int.MinValue;
 
             return (int)result;
         }
         #endregion
         #region 35. Search Insert Position
-        public static int SearchInsert(int[] nums, int target) {
-            if(nums[0] >= target)
+        public static int SearchInsert(int[] nums, int target)
+        {
+            if (nums[0] >= target)
                 return 0;
 
-            for(var i = 0; i < nums.Length; i++)
+            for (var i = 0; i < nums.Length; i++)
             {
-                if(nums[i] < target)
+                if (nums[i] < target)
                 {
                     continue;
                 }
-                
+
                 return i;
             }
 
@@ -249,8 +250,25 @@ namespace Portfolio.Helpers
 
         }
         #endregion
+        #region 69. Sqrt(x)
+        public static int MySqrt(int x)
+        {
+            if (x >= 2147395600)
+            {
+                return 46340;
+            }
+            int a = 0;
+
+            while ((a * a) <= x)
+            {
+                a++;
+            }
+            return a - 1;
+        }
+        #endregion
         #region 71. Simplify Path
-        public static string SimplifyPath(string path) {
+        public static string SimplifyPath(string path)
+        {
 
             var sections = path.Split('/');
             List<string> strings = [];
@@ -262,7 +280,7 @@ namespace Portfolio.Helpers
 
                 if (section == "..")
                 {
-                    if(strings.Count - 1 != - 1)
+                    if (strings.Count - 1 != -1)
                         strings.RemoveAt(strings.Count - 1);
                     continue;
                 }
@@ -270,7 +288,7 @@ namespace Portfolio.Helpers
                 strings.Add(section);
             }
 
-            return '/' + string.Join("/",strings);
+            return '/' + string.Join("/", strings);
         }
         #endregion
         #region 557. Reverse Words in a String III
@@ -360,6 +378,6 @@ namespace Portfolio.Helpers
         }
 
         #endregion
-        
+
     }
 }

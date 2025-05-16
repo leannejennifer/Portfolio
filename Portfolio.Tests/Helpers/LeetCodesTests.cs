@@ -233,5 +233,15 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.SimplifyPath(input), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(4, 2)]
+        [TestCase(8, 2)]
+        [TestCase(144, 12)]
+        [TestCase(2147395600, 46340)]
+        [TestCase(2147483647, 46340)]
+        public void MySqrt_Input_ExpectedOutput(int input, int expectedOutput)
+        {
+            Assert.That(LeetCodes.MySqrt(input), Is.EqualTo(expectedOutput),$"The sqrt of {input} is {expectedOutput}");
+        }
     }
 }
