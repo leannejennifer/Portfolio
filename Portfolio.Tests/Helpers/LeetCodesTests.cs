@@ -1,4 +1,5 @@
-﻿using Portfolio.Helpers;
+﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using Portfolio.Helpers;
 using Portfolio.Models;
 
 namespace Portfolio.Tests.Helpers
@@ -186,15 +187,15 @@ namespace Portfolio.Tests.Helpers
             Assert.That(LeetCodes.ValidParentheses(input), Is.EqualTo(expectedValue), $"{input} is{(expectedValue ? "" : " not")} complete.");
         }
         #endregion
-        
-        [TestCase(10,3,3)]
-        [TestCase(7,-3,-2)]
-        [TestCase(-2147483648,-1,2147483647)]
+
+        [TestCase(10, 3, 3)]
+        [TestCase(7, -3, -2)]
+        [TestCase(-2147483648, -1, 2147483647)]
         public void Divide_Input_ExpectedOutput(int dividend, int divisor, int expectedOutput)
         {
             // When I call Divide
             var result = LeetCodes.Divide(dividend, divisor);
-            
+
             // Then it should return the quotient
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
@@ -205,22 +206,32 @@ namespace Portfolio.Tests.Helpers
         public void StrStr_Input_ExpectedOutput(string haystack, string needle, int expectedOutput)
         {
             // When I call StrStr
-            var result = LeetCodes.StrStr(haystack,needle);
+            var result = LeetCodes.StrStr(haystack, needle);
             // Then it will return the first index of needle
 
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
 
-        [TestCase(new int[]{1,3,5,6}, 5, 2)]
-        [TestCase(new int[]{1,3,5,6}, 2, 1)]
-        [TestCase(new int[]{1,3,5,6}, 7, 4)]
-        [TestCase(new int[]{1,3,5,6}, 5, 2)]
-        [TestCase(new int[]{1}, 0, 0)]
-        [TestCase(new int[]{1}, 1, 0)]
-        [TestCase(new int[]{1,3}, 2, 1)]
+        [TestCase(new int[] { 1, 3, 5, 6 }, 5, 2)]
+        [TestCase(new int[] { 1, 3, 5, 6 }, 2, 1)]
+        [TestCase(new int[] { 1, 3, 5, 6 }, 7, 4)]
+        [TestCase(new int[] { 1, 3, 5, 6 }, 5, 2)]
+        [TestCase(new int[] { 1 }, 0, 0)]
+        [TestCase(new int[] { 1 }, 1, 0)]
+        [TestCase(new int[] { 1, 3 }, 2, 1)]
         public void SearchInsert_Input_ExpectedOutput(int[] input, int target, int expectedOutput)
         {
-            Assert.That(LeetCodes.SearchInsert(input,target), Is.EqualTo(expectedOutput));
+            Assert.That(LeetCodes.SearchInsert(input, target), Is.EqualTo(expectedOutput));
+        }
+
+        [TestCase("/home/user/Documents/../Pictures", "/home/user/Pictures")]
+        [TestCase("/home//foo/", "/home/foo")]
+        [TestCase("/home/user/Documents/../Pictures", "/home/user/Pictures")]
+        [TestCase("/../", "/")]
+        [TestCase("/.../a/../b/c/../d/./", "/.../b/d")]
+        public void SimplifyPath_Input_ExpectedOutput(string input, string expectedOutput)
+        {
+            Assert.That(LeetCodes.SimplifyPath(input), Is.EqualTo(expectedOutput));
         }
     }
 }

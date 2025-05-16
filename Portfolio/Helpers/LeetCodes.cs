@@ -249,6 +249,30 @@ namespace Portfolio.Helpers
 
         }
         #endregion
+        #region 71. Simplify Path
+        public static string SimplifyPath(string path) {
+
+            var sections = path.Split('/');
+            List<string> strings = [];
+
+            foreach (var section in sections)
+            {
+                if (section == "" || section == ".")
+                    continue;
+
+                if (section == "..")
+                {
+                    if(strings.Count - 1 != - 1)
+                        strings.RemoveAt(strings.Count - 1);
+                    continue;
+                }
+
+                strings.Add(section);
+            }
+
+            return '/' + string.Join("/",strings);
+        }
+        #endregion
         #region 557. Reverse Words in a String III
         public static string ReverseWords(string s)
         {
