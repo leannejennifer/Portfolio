@@ -326,6 +326,29 @@ namespace Portfolio.Helpers
             return a;
         }
         #endregion
+        #region 2396. Strictly Palindromic Number
+        public static bool IsStrictlyPalindromic(int n)
+        {
+            for (int i = 2; i < n - 1; i++)
+            {
+                var input = n;
+                var binary = "";
+                while (input > 0)
+                {
+                    binary = (input % i) + binary;
+                    input /= i;
+                }
+
+                for (int j = 0; j < binary.Length / 2; j++)
+                {
+                    if (binary[j] != binary[^(j + 1)])
+                        return false;
+                }
+            }
+
+            return true;
+        }
+        #endregion
         #region 3110. Score of a string
         public static int ScoreOfString(string s)
         {

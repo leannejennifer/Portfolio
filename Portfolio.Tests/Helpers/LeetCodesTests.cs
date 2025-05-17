@@ -241,7 +241,14 @@ namespace Portfolio.Tests.Helpers
         [TestCase(2147483647, 46340)]
         public void MySqrt_Input_ExpectedOutput(int input, int expectedOutput)
         {
-            Assert.That(LeetCodes.MySqrt(input), Is.EqualTo(expectedOutput),$"The sqrt of {input} is {expectedOutput}");
+            Assert.That(LeetCodes.MySqrt(input), Is.EqualTo(expectedOutput), $"The sqrt of {input} is {expectedOutput}");
+        }
+
+        [TestCase(9, false)]
+        [TestCase(4, false)]
+        public void IsStrictlyPalindromic_Input_ExpectedOutput(int input, bool expectedOutput)
+        {
+            Assert.That(LeetCodes.IsStrictlyPalindromic(input), Is.EqualTo(expectedOutput));
         }
     }
 }
