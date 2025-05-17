@@ -250,5 +250,13 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.IsStrictlyPalindromic(input), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(3, "III")]
+        [TestCase(58, "LVIII")]
+        [TestCase(1994, "MCMXCIV")]
+        public void IntToRoman_Input_ExpectedOutput(int input, string expectedOutput)
+        {
+            Assert.That(LeetCodes.IntToRoman(input), Is.EqualTo(expectedOutput));
+        }
     }
 }

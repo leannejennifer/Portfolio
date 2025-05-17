@@ -36,6 +36,39 @@ namespace Portfolio.Helpers
 
         #endregion
 
+        #region 12. Integer to Roman
+        public static string IntToRoman(int num)
+        {
+            var output = string.Empty;
+            Dictionary<int, string> bigToLittle = new(){
+                {1000, "M" },
+                {900, "CM" },
+                {500, "D" },
+                {400, "CD" },
+                {100, "C" },
+                {90, "XC" },
+                {50, "L" },
+                {40, "XL" },
+                {10, "X" },
+                {9, "IX" },
+                {5, "V" },
+                {4, "IV" },
+                {1, "I"}
+            };
+
+            foreach (var div in bigToLittle)
+            {
+                while (num / div.Key > 0)
+                {
+                    output += div.Value;
+                    num -= div.Key;
+                }
+            }
+            
+            return output;
+        }
+        #endregion
+
         #region 29. Divide Two Integers
         public static int Divide(int dividend, int divisor)
         {
@@ -55,7 +88,7 @@ namespace Portfolio.Helpers
         public static string SimplifyPath(string path)
         {
 
-            var sections = path.Split('/');
+            var sections = path.Split("/");
             List<string> strings = [];
 
             foreach (var section in sections)
@@ -73,7 +106,7 @@ namespace Portfolio.Helpers
                 strings.Add(section);
             }
 
-            return '/' + string.Join("/", strings);
+            return "/" + string.Join("/", strings);
         }
         #endregion
 
