@@ -5,7 +5,7 @@ using Portfolio.Models;
 namespace Portfolio.Tests.Helpers
 {
     [TestFixture]
-    public class LeetCodesTests
+    public partial class LeetCodesTests
     {
         [TestCase(121, true)]
         [TestCase(-121, false)]
