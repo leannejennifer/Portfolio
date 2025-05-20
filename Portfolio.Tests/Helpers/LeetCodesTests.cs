@@ -258,5 +258,13 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.IntToRoman(input), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new[] { 2, 2, 1 }, 1)]
+        [TestCase(new[] { 4, 1, 2, 1, 2 }, 4)]
+        [TestCase(new[] { 1 }, 1)]
+        public void SingleNumber(int[] input, int expectedOutput)
+        {
+            Assert.That(LeetCodes.SingleNumber(input), Is.EqualTo(expectedOutput));
+        }
     }
 }

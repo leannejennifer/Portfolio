@@ -252,6 +252,23 @@ namespace Portfolio.Helpers
             return a - 1;
         }
         #endregion
+        #region 136. Single Number
+        public static int SingleNumber(int[] nums)
+        {
+            List<int> ints = [];
+            for (int i = 0; i < nums.Length; i++)
+            {
+                var current = nums[i];
+
+                if (!ints.Remove(current))
+                {
+                    ints.Add(current);
+                }
+            }
+            return ints[0];
+        }
+        #endregion
+
         #region 557. Reverse Words in a String III
         public static string ReverseWords(string s)
         {
