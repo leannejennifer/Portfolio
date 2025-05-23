@@ -273,6 +273,14 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.BuildArray(input), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(36.50,new double[]{309.65000,97.70000})]
+        [TestCase(122.11,new double[]{395.26000,251.79800})]
+        public void ConvertTemperature(double input, double[] expectedOutput)
+        {
+            var result = LeetCodes.ConvertTemperature(input);
+            Assert.That(result, Is.EqualTo(expectedOutput));
+        }
         
     }
 }

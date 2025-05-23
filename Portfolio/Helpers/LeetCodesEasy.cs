@@ -313,6 +313,15 @@ namespace Portfolio.Helpers
             return output;
         }
         #endregion
+        #region 2469. Convert the Temperature
+        public static double[] ConvertTemperature(double celsius) {
+            //Kelvin = Celsius + 273.15
+            //Fahrenheit = Celsius * 1.80 + 32.00
+            var k = celsius + 273.15;
+            var f = celsius * 1.80 + 32.00;
+            return [k, f];
+        }
+        #endregion
         #region 3110. Score of a string
         public static int ScoreOfString(string s)
         {
