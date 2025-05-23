@@ -268,7 +268,6 @@ namespace Portfolio.Helpers
             return ints[0];
         }
         #endregion
-
         #region 557. Reverse Words in a String III
         public static string ReverseWords(string s)
         {
@@ -302,6 +301,16 @@ namespace Portfolio.Helpers
                     a++;
             }
             return a;
+        }
+        #endregion
+        #region 1920. Build Array from Permutation
+        public static int[] BuildArray(int[] nums) {
+            var output = new int[nums.Length];
+            for (var i = 0; i < nums.Length; i++)
+            {
+                output[i] = nums[nums[i]];
+            }
+            return output;
         }
         #endregion
         #region 3110. Score of a string

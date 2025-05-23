@@ -266,5 +266,13 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.SingleNumber(input), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new int[] { 0, 2, 1, 5, 3, 4 }, new int[] { 0, 1, 2, 4, 5, 3 })]
+        [TestCase(new int[] { 5, 0, 1, 2, 3, 4 }, new int[] { 4, 5, 0, 1, 2, 3 })]
+        public void BuildArray(int[] input, int[] expectedOutput)
+        {
+            Assert.That(LeetCodes.BuildArray(input), Is.EqualTo(expectedOutput));
+        }
+        
     }
 }
