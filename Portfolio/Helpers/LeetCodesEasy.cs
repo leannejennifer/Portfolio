@@ -322,6 +322,24 @@ namespace Portfolio.Helpers
             return [k, f];
         }
         #endregion
+        #region 2894. Divisible and Non-divisible Sums Difference
+        public static int DifferenceOfSums(int n, int m) {
+            int result = 0;
+            for (int a = 1; a <= n; a++)
+            {
+                if (a % m == 0)
+                {
+                    result -= a;
+                }
+                else
+                {
+                    result += a;
+                }
+
+            }
+            return result;
+        }
+        #endregion
         #region 3110. Score of a string
         public static int ScoreOfString(string s)
         {
