@@ -313,8 +313,15 @@ namespace Portfolio.Helpers
             return output;
         }
         #endregion
+        #region 2769. Find the Maximum Achievable Number
+        public static int TheMaximumAchievableX(int num, int t)
+        {
+            return num + (t * 2);
+        }
+        #endregion
         #region 2469. Convert the Temperature
-        public static double[] ConvertTemperature(double celsius) {
+        public static double[] ConvertTemperature(double celsius)
+        {
             //Kelvin = Celsius + 273.15
             //Fahrenheit = Celsius * 1.80 + 32.00
             var k = celsius + 273.15;

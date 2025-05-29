@@ -282,12 +282,18 @@ namespace Portfolio.Tests.Helpers
             Assert.That(result, Is.EqualTo(expectedOutput));
         }
 
-
         [TestCase(10, 3, 19)]
         [TestCase(5, 6, 15)]
         public void DifferenceOfSums(int n, int m, int expectedOutput)
         {
             Assert.That(LeetCodes.DifferenceOfSums(n, m), Is.EqualTo(expectedOutput));
+        }
+
+        [TestCase(4, 1, 6)]
+        [TestCase(3, 2, 7)]
+        public void TheMaximumAchievableX(int num, int t, int expectedOutput)
+        {
+            Assert.That(LeetCodes.TheMaximumAchievableX(num, t), Is.EqualTo(expectedOutput));
         }
     }
 }
