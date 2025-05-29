@@ -303,5 +303,12 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.FindWordsContaining(words, x), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new int[] { 1, 2, 1 }, new int[] { 1, 2, 1, 1, 2, 1 })]
+        [TestCase(new int[] { 1, 3, 2, 1 }, new int[] { 1, 3, 2, 1, 1, 3, 2, 1 })]
+        public void GetConcatenation(int[] input, int[] expectedOutput)
+        {
+            Assert.That(LeetCodes.GetConcatenation(input), Is.EqualTo(expectedOutput));
+        }
     }
 }

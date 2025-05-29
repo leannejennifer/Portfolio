@@ -313,6 +313,11 @@ namespace Portfolio.Helpers
             return output;
         }
         #endregion
+        #region 1929. Concatenation of Array
+        public static int[] GetConcatenation(int[] nums) {
+            return [.. nums, .. nums];
+        }
+        #endregion
         #region 2469. Convert the Temperature
         public static double[] ConvertTemperature(double celsius)
         {
