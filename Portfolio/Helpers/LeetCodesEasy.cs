@@ -313,12 +313,6 @@ namespace Portfolio.Helpers
             return output;
         }
         #endregion
-        #region 2769. Find the Maximum Achievable Number
-        public static int TheMaximumAchievableX(int num, int t)
-        {
-            return num + (t * 2);
-        }
-        #endregion
         #region 2469. Convert the Temperature
         public static double[] ConvertTemperature(double celsius)
         {
@@ -329,8 +323,15 @@ namespace Portfolio.Helpers
             return [k, f];
         }
         #endregion
+        #region 2769. Find the Maximum Achievable Number
+        public static int TheMaximumAchievableX(int num, int t)
+        {
+            return num + (t * 2);
+        }
+        #endregion
         #region 2894. Divisible and Non-divisible Sums Difference
-        public static int DifferenceOfSums(int n, int m) {
+        public static int DifferenceOfSums(int n, int m)
+        {
             int result = 0;
             for (int a = 1; a <= n; a++)
             {
@@ -345,6 +346,21 @@ namespace Portfolio.Helpers
 
             }
             return result;
+        }
+        #endregion
+        #region 2942. Find Words Containing Character
+        public static IList<int> FindWordsContaining(string[] words, char x) {
+            
+            List<int> ints = [];
+            for (var i = 0; i < words.Length; i++)
+            {
+                if (words[i].Contains(x))
+                {
+                    ints.Add(i);
+                }
+            }
+
+            return [.. ints];
         }
         #endregion
         #region 3110. Score of a string

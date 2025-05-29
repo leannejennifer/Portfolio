@@ -295,5 +295,13 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.TheMaximumAchievableX(num, t), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new string[] { "leet", "code" }, "e", new int[] { 0, 1 })]
+        [TestCase(new string[] { "abc", "bcd", "aaaa", "cbc" }, "a", new int[] { 0, 2 })]
+        [TestCase(new string[] { "abc", "bcd", "aaaa", "cbc" }, "z", new int[] { })]
+        public void FindWordsContaining(string[] words, char x, int[] expectedOutput)
+        {
+            Assert.That(LeetCodes.FindWordsContaining(words, x), Is.EqualTo(expectedOutput));
+        }
     }
 }
