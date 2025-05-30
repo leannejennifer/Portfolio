@@ -290,6 +290,11 @@ namespace Portfolio.Helpers
             return sb.ToString();
         }
         #endregion
+        #region 1108. Defanging an IP Address
+        public static string DefangIPaddr(string address) {
+            return address.Replace(".", "[.]");
+        }
+        #endregion
         #region 1295. Find Numbers with Even Number of Digits
         public static int FindNumbers(int[] nums)
         {

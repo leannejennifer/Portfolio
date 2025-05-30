@@ -310,5 +310,12 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.GetConcatenation(input), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase("1.1.1.1", "1[.]1[.]1[.]1")]
+        [TestCase("255.100.50.0", "255[.]100[.]50[.]0")]
+        public void DefangIPaddr(string input, string expectedOutput)
+        {
+            Assert.That(LeetCodes.DefangIPaddr(input), Is.EqualTo(expectedOutput));
+        }
     }
 }
