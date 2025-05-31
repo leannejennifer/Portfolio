@@ -317,5 +317,13 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.DefangIPaddr(input), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new int[] { 1, 2, 3, 1, 1, 3 }, 4)]
+        [TestCase(new int[] { 1, 1, 1, 1 }, 6)]
+        [TestCase(new int[] { 1, 2, 3 }, 0)]
+        public void NumIdenticalPairs(int[] input, int expectedOutput)
+        {
+            Assert.That(LeetCodes.NumIdenticalPairs(input), Is.EqualTo(expectedOutput));
+        }
     }
 }

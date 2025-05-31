@@ -308,8 +308,25 @@ namespace Portfolio.Helpers
             return a;
         }
         #endregion
+        #region 1512. Number of Good Pairs
+        public static int NumIdenticalPairs(int[] nums) {
+            
+            var iterator = nums.ToList();
+            var goodPairs = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                iterator.RemoveAt(0);
+                if (iterator.Contains(nums[i]))
+                {
+                    goodPairs+= iterator.Where(d=>d == nums[i]).Count();
+                }
+            }
+            return goodPairs;
+        }
+        #endregion
         #region 1920. Build Array from Permutation
-        public static int[] BuildArray(int[] nums) {
+        public static int[] BuildArray(int[] nums)
+        {
             var output = new int[nums.Length];
             for (var i = 0; i < nums.Length; i++)
             {
