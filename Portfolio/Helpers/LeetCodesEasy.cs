@@ -340,6 +340,17 @@ namespace Portfolio.Helpers
             return [.. nums, .. nums];
         }
         #endregion
+        #region 2011. Final Value of Variable After Performing Operations
+        public static int FinalValueAfterOperations(string[] operations)
+        {
+            var result = 0;
+            foreach (var operation in operations)
+            {
+                result += operation[1] == '+' ? 1 : -1;
+            }
+            return result;
+        }
+        #endregion
         #region 2469. Convert the Temperature
         public static double[] ConvertTemperature(double celsius)
         {

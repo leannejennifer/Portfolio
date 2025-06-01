@@ -325,5 +325,13 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.NumIdenticalPairs(input), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new string[] { "--X", "X++", "X++" }, 1)]
+        [TestCase(new string[] { "++X", "++X", "X++" }, 3)]
+        [TestCase(new string[] { "X++","++X","--X","X--" }, 0)]
+        public void FinalValueAfterOperations(string[] input, int expectedOutput)
+        {
+            Assert.That(LeetCodes.FinalValueAfterOperations(input), Is.EqualTo(expectedOutput));
+        }
     }
 }
