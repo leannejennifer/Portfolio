@@ -3,13 +3,13 @@
     [TestFixture(Category ="FizzBuzz")]
     public class FizzBuzzTest
     {
-        private StringWriter _writer;
+        private StringWriter? _writer;
 
         [TearDown]
         public void TearDown()
         {
             Console.SetOut(Console.Out);
-            _writer.Dispose();
+            _writer?.Dispose();
         }
 
         [TestCase(3)]

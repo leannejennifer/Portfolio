@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Portfolio.Helpers
+﻿namespace Portfolio.Helpers
 {
     public static class NumberHelper
     {
@@ -39,7 +33,7 @@ namespace Portfolio.Helpers
 
         public static int GetRandomNumber(int maxValue, int? previousValue = null)
         {
-            Random random = new();
+            Random random = new ();
 
             var range = Enumerable.Range(0, maxValue).Where(d => d != previousValue);
 

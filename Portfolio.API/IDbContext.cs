@@ -4,6 +4,6 @@ namespace Portfolio.API
 {
     public interface IDbContext
     {
-        public IEnumerable<Student> GetCollection(Type type);
+        public IEnumerable<Student>? GetCollection(Type type);
     }
 }

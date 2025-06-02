@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
-using NUnit.Framework;
 using Portfolio.API.Controllers;
 using Portfolio.API.Models;
 
@@ -35,7 +26,9 @@ namespace Portfolio.API.Tests.Controllers
             var result = controller.Get();
 
             // Assert
-			Assert.That((result.Result as OkObjectResult).Value, Is.EquivalentTo(expectedStudents));
+            var okResult = result.Result as OkObjectResult;
+            Assert.That(okResult, Is.Not.Null, "Expected OkObjectResult but got null.");
+            Assert.That(okResult.Value, Is.EquivalentTo(expectedStudents));
 
         }
         [Test]

@@ -1,8 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Bunit;
-using Microsoft.AspNetCore.Components.Forms;
+﻿using Bunit;
 using Portfolio.UI.Components.Pages;
-using Portfolio.UI.Models;
 
 namespace Portfolio.Tests.BlazorTests
 {

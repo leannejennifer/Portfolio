@@ -11,7 +11,7 @@ namespace Portfolio.UI.Services
         {
             var response = await _httpClient.GetAsync("api/Student/GetStudents");
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<IEnumerable<Student>>();
+            return await response.Content.ReadFromJsonAsync<IEnumerable<Student>>() ?? [];
         }
     }
 }

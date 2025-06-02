@@ -3,168 +3,173 @@
 @using System.Reflection
 @using System.ComponentModel
 @using System.Globalization
+@using MudBlazor
 
 <div Style="padding-left:24px; padding-right:24px">
-<h1>Net worth: @totalNetWorth()</h1>
-<p style="padding-bottom:8px">@DateTime.Now.ToLongDateString()</p>
-<MudGrid Justify="Justify.FlexStart" >
-    @foreach (PropertyInfo propertyInfo in finances.GetType().GetProperties())
-    {
-        var positive = propertyInfo.GetCustomAttribute<Inverse>() == null;
-        
-        <MudItem xs="3">
-            <MudDataGrid Items="@(((IEnumerable<Finance>)propertyInfo.GetValue(finances)).OrderByDescending(d=>d.value))">
-                <Columns>
-                    <PropertyColumn Property="x => x.name" Title="@(propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyInfo.Name)" />
-                        <PropertyColumn Property="x => positive || x.value == 0 ? ToFinancialString(x.value) : ToFinancialString(x.value*-1)" Title="" />
-                </Columns>
-            </MudDataGrid>
-        </MudItem>
-    }
-</MudGrid>
+    <h1>Net worth: @totalNetWorth()</h1>
+    <p style="padding-bottom:8px">@DateTime.Now.ToLongDateString()</p>
+    <MudGrid Justify="Justify.FlexStart">
+        @foreach (PropertyInfo propertyInfo in finances.GetType().GetProperties())
+        {
+            var positive = propertyInfo.GetCustomAttribute<Inverse>() == null;
+
+            <MudItem xs="3">
+                <MudDataGrid
+                    Items="@(((propertyInfo.GetValue(finances) as IEnumerable<Finance>) ?? Enumerable.Empty<Finance>()).OrderByDescending(d => d.value))">
+                    <Columns>
+                        <PropertyColumn Property="x => x.name"
+                            Title="@(propertyInfo.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? propertyInfo.Name)" />
+                        <PropertyColumn
+                            Property="x => positive || x.value == 0 ? ToFinancialString(x.value) : ToFinancialString(x.value*-1)"
+                            Title="" />
+                    </Columns>
+                </MudDataGrid>
+            </MudItem>
+        }
+    </MudGrid>
 
 </div>
 @code {
     static string json = @"{
-    ""Current"": [
-        {
-            ""name"": ""First Direct"",
-            ""value"": 1599.99
-        },
-        {
-            ""name"": ""Nationwide"",
-            ""value"": 517.99
-        },
-        {
-            ""name"": ""Monzo"",
-            ""value"": 82.80
-        },
-        {
-            ""name"": ""Monzo - wild fire"",
-            ""value"": 186.00
-        },
-        {
-            ""name"": ""Revolut - Joint"",
-            ""value"": 50.43
-        },
-        {
-            ""name"": ""Revolut"",
-            ""value"": 58.54
-        },
-        {
-            ""name"": ""Virgin"",
-            ""value"": 0
-        }
-    ],
-    ""Savings"": [
-        {
-            ""name"": ""First Direct Fixed Saver"",
-            ""value"": 1800
-        },
-        {
-            ""name"": ""First Direct Saver"",
-            ""value"": 0.22
-        },
-        {
-            ""name"": ""Monzo - Emergency"",
-            ""value"": 10024.45
-        },
-        {
-            ""name"": ""Virgin"",
-            ""value"": 0
-        }
-    ],
-    ""CreditCards"": [
-        {
-            ""name"": ""Lloyds"",
-            ""value"": 773.15
-        },
-        {
-            ""name"": ""HSBC"",
-            ""value"": 0
-        },
-        {
-            ""name"": ""Lloyds"",
-            ""value"": 0
-        },
-        {
-            ""name"": ""M&S"",
-            ""value"": 0
-        },
-        {
-            ""name"": ""Sainsburys"",
-            ""value"": 0
-        }
-    ],
-    ""Investments"": [
-        {
-            ""name"": ""Trading 212 Invest"",
-            ""value"": 1283.87
-        },
-        {
-            ""name"": ""Trading 212 ISA"",
-            ""value"": 29162.46
-        }
-    ],
-    ""Loans"": [
-        {
-            ""name"": ""TSB - Mortgage"",
-            ""value"": 76187.00
-        },
-        {
-            ""name"": ""Student Finance"",
-            ""value"": 8350.22
-        },
-        {
-            ""name"": ""Camp Wildfire"",
-            ""value"": 186.00
-        }
-    ],
-    ""Pensions"": [
-        {
-            ""name"": ""Aviva - MOD"",
-            ""value"": 9484.65
-        },
-        {
-            ""name"": ""Aviva - Steris"",
-            ""value"": 30293.08
-        },
-        {
-            ""name"": ""Nest - Bionical"",
-            ""value"": 2069.53
-        },
-        {
-            ""name"": ""Scottish Widows - Current"",
-            ""value"": 0
-        }
-    ],
-    ""Assets"": [
-        {
-            ""name"": ""House"",
-            ""value"": 167000
-        },
-        {
-            ""name"": ""Car"",
-            ""value"": 9009
-        }
-    ]
+""Current"": [
+{
+""name"": ""First Direct"",
+""value"": 1599.99
+},
+{
+""name"": ""Nationwide"",
+""value"": 517.99
+},
+{
+""name"": ""Monzo"",
+""value"": 82.80
+},
+{
+""name"": ""Monzo - wild fire"",
+""value"": 186.00
+},
+{
+""name"": ""Revolut - Joint"",
+""value"": 50.43
+},
+{
+""name"": ""Revolut"",
+""value"": 58.54
+},
+{
+""name"": ""Virgin"",
+""value"": 0
+}
+],
+""Savings"": [
+{
+""name"": ""First Direct Fixed Saver"",
+""value"": 1800
+},
+{
+""name"": ""First Direct Saver"",
+""value"": 0.22
+},
+{
+""name"": ""Monzo - Emergency"",
+""value"": 10024.45
+},
+{
+""name"": ""Virgin"",
+""value"": 0
+}
+],
+""CreditCards"": [
+{
+""name"": ""Lloyds"",
+""value"": 773.15
+},
+{
+""name"": ""HSBC"",
+""value"": 0
+},
+{
+""name"": ""Lloyds"",
+""value"": 0
+},
+{
+""name"": ""M&S"",
+""value"": 0
+},
+{
+""name"": ""Sainsburys"",
+""value"": 0
+}
+],
+""Investments"": [
+{
+""name"": ""Trading 212 Invest"",
+""value"": 1283.87
+},
+{
+""name"": ""Trading 212 ISA"",
+""value"": 29162.46
+}
+],
+""Loans"": [
+{
+""name"": ""TSB - Mortgage"",
+""value"": 76187.00
+},
+{
+""name"": ""Student Finance"",
+""value"": 8350.22
+},
+{
+""name"": ""Camp Wildfire"",
+""value"": 186.00
+}
+],
+""Pensions"": [
+{
+""name"": ""Aviva - MOD"",
+""value"": 9484.65
+},
+{
+""name"": ""Aviva - Steris"",
+""value"": 30293.08
+},
+{
+""name"": ""Nest - Bionical"",
+""value"": 2069.53
+},
+{
+""name"": ""Scottish Widows - Current"",
+""value"": 0
+}
+],
+""Assets"": [
+{
+""name"": ""House"",
+""value"": 167000
+},
+{
+""name"": ""Car"",
+""value"": 9009
+}
+]
 }";
-    private Finances finances = JsonSerializer.Deserialize<Finances>(json);
+    private Finances finances = JsonSerializer.Deserialize<Finances>(json)!;
 
     public class Finances
     {
         [DisplayName("Current Accounts")]
-        public List<Finance> Current { get; set; }
+        public List<Finance>? Current { get; set; }
         [DisplayName("Savings Accounts")]
-        public List<Finance> Savings { get; set; }
+        public List<Finance>? Savings { get; set; }
         [DisplayName("Credit Cards")]
         [Inverse]
-        public List<Finance> CreditCards { get; set; }
-        public List<Finance> Investments { get; set; }
+        public List<Finance>? CreditCards { get; set; }
+        public List<Finance>? Investments { get; set; }
         [Inverse]
-        public List<Finance> Loans { get; set; }
-        public List<Finance> Pensions { get; set; }
-        public List<Finance> Assets { get; set; }
+        public List<Finance>? Loans { get; set; }
+        public List<Finance>? Pensions { get; set; }
+        public List<Finance>? Assets { get; set; }
     }
 
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
@@ -172,29 +177,30 @@
     {
     }
 
-    private string totalNetWorth() {
+    private string totalNetWorth()
+    {
 
         var result = 0.0;
 
         @foreach (PropertyInfo propertyInfo in finances.GetType().GetProperties())
         {
-            var prop = (IEnumerable<Finance>)propertyInfo.GetValue(finances);
+            var prop = (propertyInfo.GetValue(finances) as IEnumerable<Finance>) ?? Enumerable.Empty<Finance>();
             var positive = propertyInfo.GetCustomAttribute<Inverse>() == null;
 
-			foreach (var finance in prop)
-			{
-                result += positive ? finance.value : finance.value*-1;
-			}
+            foreach (var finance in prop)
+            {
+                result += positive ? finance.value : finance.value * -1;
+            }
         }
 
         return ToFinancialString(result);
     }
 
-	public class Finance
-	{
-		public string name { get; set; }
-		public double value { get; set; }
-	}
+    public class Finance
+    {
+        public string? name { get; set; }
+        public double value { get; set; }
+    }
 
     public static string ToFinancialString(double value)
     {

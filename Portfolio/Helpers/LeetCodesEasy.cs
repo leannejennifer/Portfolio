@@ -1,11 +1,12 @@
-﻿using System.Text;
-using Portfolio.Models;
-
-namespace Portfolio.Helpers
+﻿namespace Portfolio.Helpers
 {
+    using System.Text;
+
     public static partial class LeetCodes
     {
+        // Do not use regions
         #region 1. Two Sum
+
         /// <summary>
         /// Returns the indexes of the integers in the array that add up to the target.
         /// Has exactly one solution.
@@ -32,41 +33,42 @@ namespace Portfolio.Helpers
 
         #endregion
         #region 9. IsPalindrome
-        // 9.
         public static bool IsPalindrome(int x)
         {
             if (x < 0)
+            {
                 return false;
+            }
 
             var str = x.ToString();
 
             for (int i = 0; i < str.Length / 2; i++)
             {
                 if (str[i] != str[^(i + 1)])
+                {
                     return false;
+                }
             }
+
             return true;
         }
+
         #endregion
         #region 13. Roman to int
-
-        // 13.
         public static int RomanToInt(string s)
         {
-            //
-            //Symbol Value
-            //I             1
-            //V             5
-            //X             10
-            //L             50
-            //C             100
-            //D             500
-            //M             1000
+            // Symbol Value
+            // I             1
+            // V             5
+            // X             10
+            // L             50
+            // C             100
+            // D             500
+            // M             1000
 
-            //I can be placed before V (5) and X (10) to make 4 and 9. 
-            //X can be placed before L(50) and C(100) to make 40 and 90.
-            //C can be placed before D(500) and M(1000) to make 400 and 900.
-
+            // I can be placed before V (5) and X (10) to make 4 and 9.
+            // X can be placed before L(50) and C(100) to make 40 and 90.
+            // C can be placed before D(500) and M(1000) to make 400 and 900.
             var result = 0;
             char? prev = null;
             for (int i = 0; i < s.Length; i++)
@@ -96,17 +98,19 @@ namespace Portfolio.Helpers
                         result += prev == 'C' ? 800 : 1000;
                         break;
                 }
+
                 prev = c;
             }
 
             return result;
         }
+
         #endregion
         #region 14. Longest Common Prefix
         public static string LongestCommonPrefix(string[] strs)
         {
             var startingWord = strs[0];
-            StringBuilder sb = new();
+            StringBuilder sb = new ();
             for (var i = 0; i < startingWord.Length; i++)
             {
                 for (var j = 1; j < strs.Length; j++)
@@ -116,14 +120,14 @@ namespace Portfolio.Helpers
                     {
                         return sb.ToString();
                     }
-
                 }
-                sb.Append(startingWord[i]);
 
+                sb.Append(startingWord[i]);
             }
 
             return sb.ToString();
         }
+
         #endregion
         #region 20. Valid Parentheses
         public static bool ValidParentheses(string input)
@@ -131,7 +135,6 @@ namespace Portfolio.Helpers
             // Open brackets must be closed by the same type of brackets.
             // Open brackets must be closed in the correct order.
             // Every close bracket has a corresponding open bracket of the same type.
-
             List<char> chrs = [];
 
             foreach (var c in input)
@@ -143,9 +146,13 @@ namespace Portfolio.Helpers
                 else
                 {
                     if (chrs.Count == 0 || !MatchPrevious(c, chrs[^1]))
+                    {
                         return false;
+                    }
                     else
+                    {
                         chrs.RemoveAt(chrs.Count - 1);
+                    }
                 }
             }
 
@@ -162,9 +169,12 @@ namespace Portfolio.Helpers
                 _ => false,
             };
         }
+
         #endregion
         #region 28. Find the Index of the First Occurrence in a String
+#pragma warning disable SA1202 // Elements should be ordered by access
         public static int StrStr(string haystack, string needle)
+#pragma warning restore SA1202 // Elements should be ordered by access
         {
             for (var i = 0; i < haystack.Length - needle.Length + 1; i++)
             {
@@ -179,12 +189,15 @@ namespace Portfolio.Helpers
 
             return -1;
         }
+
         #endregion
         #region 35. Search Insert Position
         public static int SearchInsert(int[] nums, int target)
         {
             if (nums[0] >= target)
+            {
                 return 0;
+            }
 
             for (var i = 0; i < nums.Length; i++)
             {
@@ -198,17 +211,18 @@ namespace Portfolio.Helpers
 
             return nums.Length;
         }
+
         #endregion
         #region 58. Length of Last Word
         public static int LengthOfLastWord(string s)
         {
             return s.Trim().Split(" ")[^1].Length;
         }
+
         #endregion
         #region 66. Plus one
         public static int[] PlusOne(int[] digits)
         {
-
             var resultDigits = new List<int>();
             int addOne = 1;
 
@@ -232,9 +246,10 @@ namespace Portfolio.Helpers
                     addOne = 0;
                 }
             }
-            return resultDigits.ToArray();
 
+            return [.. resultDigits];
         }
+
         #endregion
         #region 69. Sqrt(x)
         public static int MySqrt(int x)
@@ -243,14 +258,17 @@ namespace Portfolio.Helpers
             {
                 return 46340;
             }
+
             int a = 0;
 
             while ((a * a) <= x)
             {
                 a++;
             }
+
             return a - 1;
         }
+
         #endregion
         #region 136. Single Number
         public static int SingleNumber(int[] nums)
@@ -265,14 +283,15 @@ namespace Portfolio.Helpers
                     ints.Add(current);
                 }
             }
+
             return ints[0];
         }
+
         #endregion
         #region 557. Reverse Words in a String III
         public static string ReverseWords(string s)
         {
-
-            StringBuilder sb = new();
+            StringBuilder sb = new ();
 
             var words = s.Split();
             foreach (var (word, index) in words.Select((word, index) => (word, index)))
@@ -281,6 +300,7 @@ namespace Portfolio.Helpers
                 {
                     sb.Append(word[i]);
                 }
+
                 if (index < words.Length - 1)
                 {
                     sb.Append(' ');
@@ -289,6 +309,7 @@ namespace Portfolio.Helpers
 
             return sb.ToString();
         }
+
         #endregion
         #region 771. Jewels and Stones
         public static int NumJewelsInStones(string jewels, string stones)
@@ -299,14 +320,17 @@ namespace Portfolio.Helpers
             {
                 result += codes.Contains(stone) ? 1 : 0;
             }
+
             return result;
         }
+
         #endregion
         #region 1108. Defanging an IP Address
         public static string DefangIPaddr(string address)
         {
             return address.Replace(".", "[.]");
         }
+
         #endregion
         #region 1295. Find Numbers with Even Number of Digits
         public static int FindNumbers(int[] nums)
@@ -316,14 +340,18 @@ namespace Portfolio.Helpers
             foreach (var num in nums)
             {
                 if (num.ToString().Length % 2 == 0)
+                {
                     a++;
+                }
             }
+
             return a;
         }
+
         #endregion
         #region 1512. Number of Good Pairs
-        public static int NumIdenticalPairs(int[] nums) {
-            
+        public static int NumIdenticalPairs(int[] nums)
+        {
             var iterator = nums.ToList();
             var goodPairs = 0;
             for (int i = 0; i < nums.Length; i++)
@@ -331,11 +359,13 @@ namespace Portfolio.Helpers
                 iterator.RemoveAt(0);
                 if (iterator.Contains(nums[i]))
                 {
-                    goodPairs+= iterator.Where(d=>d == nums[i]).Count();
+                    goodPairs += iterator.Where(d => d == nums[i]).Count();
                 }
             }
+
             return goodPairs;
         }
+
         #endregion
         #region 1920. Build Array from Permutation
         public static int[] BuildArray(int[] nums)
@@ -345,13 +375,17 @@ namespace Portfolio.Helpers
             {
                 output[i] = nums[nums[i]];
             }
+
             return output;
         }
+
         #endregion
         #region 1929. Concatenation of Array
-        public static int[] GetConcatenation(int[] nums) {
+        public static int[] GetConcatenation(int[] nums)
+        {
             return [.. nums, .. nums];
         }
+
         #endregion
         #region 2011. Final Value of Variable After Performing Operations
         public static int FinalValueAfterOperations(string[] operations)
@@ -361,24 +395,28 @@ namespace Portfolio.Helpers
             {
                 result += operation[1] == '+' ? 1 : -1;
             }
+
             return result;
         }
+
         #endregion
         #region 2469. Convert the Temperature
         public static double[] ConvertTemperature(double celsius)
         {
-            //Kelvin = Celsius + 273.15
-            //Fahrenheit = Celsius * 1.80 + 32.00
+            // Kelvin = Celsius + 273.15
+            // Fahrenheit = Celsius * 1.80 + 32.00
             var k = celsius + 273.15;
-            var f = celsius * 1.80 + 32.00;
+            var f = (celsius * 1.80) + 32.00;
             return [k, f];
         }
+
         #endregion
         #region 2769. Find the Maximum Achievable Number
         public static int TheMaximumAchievableX(int num, int t)
         {
             return num + (t * 2);
         }
+
         #endregion
         #region 2894. Divisible and Non-divisible Sums Difference
         public static int DifferenceOfSums(int n, int m)
@@ -394,14 +432,15 @@ namespace Portfolio.Helpers
                 {
                     result += a;
                 }
-
             }
+
             return result;
         }
+
         #endregion
         #region 2942. Find Words Containing Character
-        public static IList<int> FindWordsContaining(string[] words, char x) {
-            
+        public static IList<int> FindWordsContaining(string[] words, char x)
+        {
             List<int> ints = [];
             for (var i = 0; i < words.Length; i++)
             {
@@ -413,6 +452,7 @@ namespace Portfolio.Helpers
 
             return [.. ints];
         }
+
         #endregion
         #region 3110. Score of a string
         public static int ScoreOfString(string s)
@@ -426,11 +466,11 @@ namespace Portfolio.Helpers
 
             return result;
         }
+
         #endregion
         #region 3065. Minimum Operations to Exceed Threshold Value I
         public static int MinOperations(int[] nums, int k)
         {
-
             return nums.Count(d => d < k);
         }
         #endregion

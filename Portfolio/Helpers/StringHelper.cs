@@ -1,10 +1,16 @@
-﻿using System.Text;
-
-namespace Portfolio.Helpers
+﻿namespace Portfolio.Helpers
 {
+    using System.Text;
+
     public static class StringHelper
     {
-        //could use linq to improve this
+        // array method is slower as the values are not unique
+        private static readonly char[] Vowels = ['a', 'e', 'i', 'o', 'u'];
+
+        // faster lookup times because hashset is a set of unique values
+        private static readonly HashSet<char> HashVowels = ['a', 'e', 'i', 'o', 'u'];
+
+        // could use linq to improve this
         public static string PigLatin(string input)
         {
             var inputWords = input.Split(" ");
@@ -14,12 +20,11 @@ namespace Portfolio.Helpers
             {
                 var word = inputWords[i];
                 var firstLetter = word[0];
-                var restOfWord = word.Substring(1);
-                outputWords[i] = restOfWord + firstLetter + (char.IsPunctuation(firstLetter) ? "" : "ay");
+                var restOfWord = word[1..];
+                outputWords[i] = restOfWord + firstLetter + (char.IsPunctuation(firstLetter) ? string.Empty : "ay");
             }
 
             return string.Join(' ', outputWords);
-
         }
 
         public static string ReverseString(string inputString)
@@ -36,9 +41,6 @@ namespace Portfolio.Helpers
             return stringBuilder.ToString();
         }
 
-        // array method is slower as the values are not unique
-        private static readonly char[] _vowels = ['a', 'e', 'i', 'o', 'u'];
-
         public static int CalculateVowelCount(string inputString)
         {
             var vowelCount = 0;
@@ -46,11 +48,10 @@ namespace Portfolio.Helpers
             var lowercaseInput = inputString;
             for (int i = 0; i < lowercaseInput.Length; i++)
             {
-                if (_vowels.Contains(lowercaseInput[i]))
+                if (Vowels.Contains(lowercaseInput[i]))
                 {
                     vowelCount++;
                 }
-
             }
 
             return vowelCount;
@@ -58,11 +59,8 @@ namespace Portfolio.Helpers
 
         public static int CalculateVowelCountLinq(string inputString)
         {
-            return inputString.ToLowerInvariant().Count(c => _vowels.Contains(c));
+            return inputString.ToLowerInvariant().Count(c => Vowels.Contains(c));
         }
-
-        // faster lookup times because hashset is a set of unique values
-        private static readonly HashSet<char> _hashVowels = ['a', 'e', 'i', 'o', 'u'];
 
         public static int CalculateVowelCountHash(string inputString)
         {
@@ -71,15 +69,13 @@ namespace Portfolio.Helpers
             var lowercaseInput = inputString;
             for (int i = 0; i < lowercaseInput.Length; i++)
             {
-                if (_hashVowels.Contains(lowercaseInput[i]))
+                if (HashVowels.Contains(lowercaseInput[i]))
                 {
                     vowelCount++;
                 }
-
             }
 
             return vowelCount;
         }
-
     }
 }

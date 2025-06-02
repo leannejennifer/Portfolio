@@ -1,6 +1,3 @@
-using System.Text;
-using Portfolio.Models;
-
 namespace Portfolio.Helpers
 {
     public static partial class LeetCodes
@@ -19,8 +16,11 @@ namespace Portfolio.Helpers
                 }
 
                 if (amount == i)
+                {
                     return i;
+                }
             }
+
             return -1;
         }
         #endregion

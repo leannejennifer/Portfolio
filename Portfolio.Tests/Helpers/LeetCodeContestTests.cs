@@ -1,6 +1,5 @@
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Portfolio.Helpers;
-using Portfolio.Models;
 
 namespace Portfolio.Tests.Helpers
 {

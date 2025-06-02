@@ -9,11 +9,11 @@
     <ValidationSummary/>
 
     <label for="FirstName">First Name</label>
-    <InputText @bind-Value=Model.FirstName class="form-control" id="FirstName" />
+    <InputText @bind-Value="Model!.FirstName" class="form-control" id="FirstName" />
     <ValidationMessage For=@(() => Model.FirstName ) />
 
     <label for="LastName">Last Name</label>
-    <InputText @bind-Value=Model.LastName class="form-control" id="LastName" />
+    <InputText @bind-Value="Model!.LastName" class="form-control" id="LastName" />
     <ValidationMessage For=@(() => Model.LastName ) />
     <br/>
     <input type="submit"/>

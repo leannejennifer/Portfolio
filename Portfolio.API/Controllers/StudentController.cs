@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Portfolio.API.Models;
 
 namespace Portfolio.API.Controllers
@@ -13,7 +12,7 @@ namespace Portfolio.API.Controllers
         {
             var students = dbContext.GetCollection(typeof(Student));
 
-            if(!students.Any())
+            if (students == null || !students.Any())
             {
                 return NotFound();
             }

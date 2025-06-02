@@ -1,15 +1,14 @@
-using System.Text;
-using Portfolio.Models;
-
+#pragma warning disable SA1124
 namespace Portfolio.Helpers
 {
+    using Portfolio.Models;
+
     public static partial class LeetCodes
     {
-
         #region WIP: 2. Add Two Numbers
 
         /// <summary>
-        /// Given two non empty, non-negative, single digit ListNodes 
+        /// Given two non empty, non-negative, single digit ListNodes
         /// </summary>
         /// <param name="l1"></param>
         /// <param name="l2"></param>
@@ -17,13 +16,12 @@ namespace Portfolio.Helpers
         {
             var currentL1 = l1;
             var currentL2 = l2;
-            ListNode output = new();
+            ListNode output = new ();
             var doubleFigures = 0;
 
             while (currentL1 != null && currentL2 != null)
             {
                 var result = currentL1.val + currentL2.val + doubleFigures;
-
 
                 output = new ListNode(result, output);
 
@@ -40,20 +38,21 @@ namespace Portfolio.Helpers
         public static string IntToRoman(int num)
         {
             var output = string.Empty;
-            Dictionary<int, string> bigToLittle = new(){
-                {1000, "M" },
-                {900, "CM" },
-                {500, "D" },
-                {400, "CD" },
-                {100, "C" },
-                {90, "XC" },
-                {50, "L" },
-                {40, "XL" },
-                {10, "X" },
-                {9, "IX" },
-                {5, "V" },
-                {4, "IV" },
-                {1, "I"}
+            Dictionary<int, string> bigToLittle = new ()
+            {
+                { 1000, "M" },
+                { 900, "CM" },
+                { 500, "D" },
+                { 400, "CD" },
+                { 100, "C" },
+                { 90, "XC" },
+                { 50, "L" },
+                { 40, "XL" },
+                { 10, "X" },
+                { 9, "IX" },
+                { 5, "V" },
+                { 4, "IV" },
+                { 1, "I" },
             };
 
             foreach (var div in bigToLittle)
@@ -64,7 +63,7 @@ namespace Portfolio.Helpers
                     num -= div.Key;
                 }
             }
-            
+
             return output;
         }
         #endregion
@@ -72,13 +71,17 @@ namespace Portfolio.Helpers
         #region 29. Divide Two Integers
         public static int Divide(int dividend, int divisor)
         {
-            Int64 result = (Int64)dividend / (Int64)divisor;
+            long result = (long)dividend / (long)divisor;
 
             if (result > int.MaxValue)
+            {
                 return int.MaxValue;
+            }
 
             if (result < int.MinValue)
+            {
                 return int.MinValue;
+            }
 
             return (int)result;
         }
@@ -87,19 +90,23 @@ namespace Portfolio.Helpers
         #region 71. Simplify Path
         public static string SimplifyPath(string path)
         {
-
             var sections = path.Split("/");
             List<string> strings = [];
 
             foreach (var section in sections)
             {
-                if (section == "" || section == ".")
+                if (section == string.Empty || section == ".")
+                {
                     continue;
+                }
 
                 if (section == "..")
                 {
                     if (strings.Count - 1 != -1)
+                    {
                         strings.RemoveAt(strings.Count - 1);
+                    }
+
                     continue;
                 }
 
@@ -116,7 +123,7 @@ namespace Portfolio.Helpers
             for (int i = 2; i < n - 1; i++)
             {
                 var input = n;
-                var binary = "";
+                var binary = string.Empty;
                 while (input > 0)
                 {
                     binary = (input % i) + binary;
@@ -126,7 +133,9 @@ namespace Portfolio.Helpers
                 for (int j = 0; j < binary.Length / 2; j++)
                 {
                     if (binary[j] != binary[^(j + 1)])
+                    {
                         return false;
+                    }
                 }
             }
 
