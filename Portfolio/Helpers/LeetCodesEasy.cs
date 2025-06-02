@@ -290,8 +290,21 @@ namespace Portfolio.Helpers
             return sb.ToString();
         }
         #endregion
+        #region 771. Jewels and Stones
+        public static int NumJewelsInStones(string jewels, string stones)
+        {
+            var codes = jewels.ToCharArray();
+            var result = 0;
+            foreach (var stone in stones)
+            {
+                result += codes.Contains(stone) ? 1 : 0;
+            }
+            return result;
+        }
+        #endregion
         #region 1108. Defanging an IP Address
-        public static string DefangIPaddr(string address) {
+        public static string DefangIPaddr(string address)
+        {
             return address.Replace(".", "[.]");
         }
         #endregion

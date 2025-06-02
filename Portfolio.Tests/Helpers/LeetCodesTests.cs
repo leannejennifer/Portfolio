@@ -328,10 +328,18 @@ namespace Portfolio.Tests.Helpers
 
         [TestCase(new string[] { "--X", "X++", "X++" }, 1)]
         [TestCase(new string[] { "++X", "++X", "X++" }, 3)]
-        [TestCase(new string[] { "X++","++X","--X","X--" }, 0)]
+        [TestCase(new string[] { "X++", "++X", "--X", "X--" }, 0)]
         public void FinalValueAfterOperations(string[] input, int expectedOutput)
         {
             Assert.That(LeetCodes.FinalValueAfterOperations(input), Is.EqualTo(expectedOutput));
+        }
+
+        [TestCase("aA", "aAAbbbb", 3)]
+        [TestCase("z", "ZZ", 0)]
+        
+        public void NumJewelsInStones(string jewels, string stones, int expectedOutput)
+        {
+            Assert.That(LeetCodes.NumJewelsInStones(jewels, stones), Is.EqualTo(expectedOutput));
         }
     }
 }
