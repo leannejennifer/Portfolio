@@ -110,7 +110,7 @@
         public static string LongestCommonPrefix(string[] strs)
         {
             var startingWord = strs[0];
-            StringBuilder sb = new();
+            StringBuilder sb = new ();
             for (var i = 0; i < startingWord.Length; i++)
             {
                 for (var j = 1; j < strs.Length; j++)
@@ -291,7 +291,7 @@
         #region 557. Reverse Words in a String III
         public static string ReverseWords(string s)
         {
-            StringBuilder sb = new();
+            StringBuilder sb = new ();
 
             var words = s.Split();
             foreach (var (word, index) in words.Select((word, index) => (word, index)))
@@ -370,6 +370,7 @@
 
             return result;
         }
+
         #endregion
         #region 1512. Number of Good Pairs
         public static int NumIdenticalPairs(int[] nums)
@@ -508,6 +509,7 @@
         {
             return nums.Count(d => d < k);
         }
+
         #endregion
         #region 3190. Find Minimum Operations to Make All Elements Divisible by Three
         public static int MinimumOperations(int[] nums)
@@ -523,6 +525,7 @@
 
             return result;
         }
+
         #endregion
         #region 3131. Find the Integer Added to Array I
         public static int AddedInteger(int[] nums1, int[] nums2)
