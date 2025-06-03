@@ -357,5 +357,12 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.MinimumOperations(nums), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new int[] { 2, 6, 4 }, new int[] { 9, 7, 5 }, 3)]
+        [TestCase(new int[] { 10 }, new int[] { 5 }, -5)]
+        public void AddedInteger(int[] nums1, int[] nums2, int expectedOutput)
+        {
+            Assert.That(LeetCodes.AddedInteger(nums1, nums2), Is.EqualTo(expectedOutput));
+        }
     }
 }

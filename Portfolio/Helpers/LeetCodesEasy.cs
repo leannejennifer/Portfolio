@@ -371,7 +371,6 @@
             return result;
         }
         #endregion
-
         #region 1512. Number of Good Pairs
         public static int NumIdenticalPairs(int[] nums)
         {
@@ -510,6 +509,12 @@
             }
 
             return result;
+        }
+        #endregion
+        #region 3131. Find the Integer Added to Array I
+        public static int AddedInteger(int[] nums1, int[] nums2)
+        {
+            return (nums2.Sum() - nums1.Sum()) / nums1.Length;
         }
         #endregion
     }
