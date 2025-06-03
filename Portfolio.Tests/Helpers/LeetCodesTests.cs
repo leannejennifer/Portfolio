@@ -350,5 +350,12 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.Shuffle(nums, n), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new int[] { 1, 2, 3, 4 }, 3)]
+        [TestCase(new int[] { 3, 6, 9 }, 0)]
+        public void MinimumOperations(int[] nums, int expectedOutput)
+        {
+            Assert.That(LeetCodes.MinimumOperations(nums), Is.EqualTo(expectedOutput));
+        }
     }
 }
