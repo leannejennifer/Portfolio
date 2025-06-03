@@ -364,5 +364,12 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.AddedInteger(nums1, nums2), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase("codeleet", new int[] { 4, 5, 6, 7, 0, 2, 1, 3 }, "leetcode")]
+        [TestCase("abc", new int[] { 0, 1, 2 }, "abc")]
+        public void RestoreString(string s, int[] indices, string expectedOutput)
+        {
+            Assert.That(LeetCodes.RestoreString(s, indices), Is.EqualTo(expectedOutput));
+        }
     }
 }

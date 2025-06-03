@@ -389,6 +389,19 @@
         }
 
         #endregion
+        #region 1528. Shuffle String
+        public static string RestoreString(string s, int[] indices)
+        {
+            var res = new char[indices.Length];
+            for (int i = 0; i < indices.Length; i++)
+            {
+                res[indices[i]] = s[i];
+            }
+
+            return new string(res);
+        }
+
+        #endregion
         #region 1920. Build Array from Permutation
         public static int[] BuildArray(int[] nums)
         {
