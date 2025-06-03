@@ -349,6 +349,29 @@
         }
 
         #endregion
+        #region 1470. Shuffle the Array
+        public static int[] Shuffle(int[] nums, int n)
+        {
+            var result = new int[nums.Length];
+            var end = nums.Skip(n).ToList();
+            var b = 0;
+            for (var i = 0; i < nums.Length; i += 2)
+            {
+                result[i] = nums[b];
+                b++;
+            }
+
+            var a = 0;
+            for (var i = 1; i < nums.Length; i += 2)
+            {
+                result[i] = end[a];
+                a++;
+            }
+
+            return result;
+        }
+        #endregion
+
         #region 1512. Number of Good Pairs
         public static int NumIdenticalPairs(int[] nums)
         {
