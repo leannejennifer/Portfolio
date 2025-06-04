@@ -403,6 +403,23 @@
         }
 
         #endregion
+        #region 1672. Richest Customer Wealth
+        public static int MaximumWealth(int[][] accounts)
+        {
+            var result = int.MinValue;
+            foreach (var account in accounts)
+            {
+                var newRes = account.Sum();
+                if (newRes > result)
+                {
+                    result = newRes;
+                }
+            }
+
+            return result;
+        }
+
+        #endregion
         #region 1920. Build Array from Permutation
         public static int[] BuildArray(int[] nums)
         {

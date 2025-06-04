@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using MudBlazor;
 using Portfolio.Helpers;
 using Portfolio.Models;
 
@@ -370,6 +371,23 @@ namespace Portfolio.Tests.Helpers
         public void RestoreString(string s, int[] indices, string expectedOutput)
         {
             Assert.That(LeetCodes.RestoreString(s, indices), Is.EqualTo(expectedOutput));
+        }
+
+        [TestCaseSource(nameof(MaximumWealthTestCases))]
+        public void MaximumWealth(int[][] accounts, int expectedOutput)
+        {
+            Assert.That(LeetCodes.MaximumWealth(accounts), Is.EqualTo(expectedOutput));
+        }
+
+        public static IEnumerable<TestCaseData> MaximumWealthTestCases
+        {
+            get
+            {
+                yield return new TestCaseData(
+                    new int[][] { [1, 2, 3], [3, 2, 1] }, 6);
+                yield return new TestCaseData(
+                    new int[][] { [1, 5], [7, 3], [3, 5] }, 10);
+            }
         }
     }
 }
