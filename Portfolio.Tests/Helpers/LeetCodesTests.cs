@@ -389,5 +389,13 @@ namespace Portfolio.Tests.Helpers
                     new int[][] { [1, 5], [7, 3], [3, 5] }, 10);
             }
         }
+
+        [TestCase(1, 2, 3)]
+        [TestCase(12, 5, 17)]
+        [TestCase(-10, 4, -6)]
+        public void Sum(int num1, int num2, int expectedOutput)
+        {
+            Assert.That(LeetCodes.Sum(num1, num2), Is.EqualTo(expectedOutput));
+        }
     }
 }

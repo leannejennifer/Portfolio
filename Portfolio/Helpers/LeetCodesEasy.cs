@@ -453,6 +453,13 @@
         }
 
         #endregion
+        #region 2235. Add Two Integers
+        public static int Sum(int num1, int num2)
+        {
+            return num1 + num2;
+        }
+
+        #endregion
         #region 2469. Convert the Temperature
         public static double[] ConvertTemperature(double celsius)
         {
