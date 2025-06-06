@@ -397,5 +397,12 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.Sum(num1, num2), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(5, 10)]
+        [TestCase(6, 6)]
+        public void SmallestEvenMultiple(int n, int expectedOutput)
+        {
+            Assert.That(LeetCodes.SmallestEvenMultiple(n), Is.EqualTo(expectedOutput));
+        }
     }
 }

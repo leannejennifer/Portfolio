@@ -460,6 +460,18 @@
         }
 
         #endregion
+        #region 2413. Smallest Even Multiple
+        public static int SmallestEvenMultiple(int n)
+        {
+            if (n % 2 == 0)
+            {
+                return n;
+            }
+
+            return n * 2;
+        }
+
+        #endregion
         #region 2469. Convert the Temperature
         public static double[] ConvertTemperature(double celsius)
         {
