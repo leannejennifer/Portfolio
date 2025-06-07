@@ -568,6 +568,37 @@
         {
             return (nums2.Sum() - nums1.Sum()) / nums1.Length;
         }
+
+        #endregion
+        #region 3280. Convert Date to Binary
+        public static string ConvertDateToBinary(string date)
+        {
+            List<string> strings = [];
+            foreach (var dateStr in date.Split('-'))
+            {
+                var output = string.Empty;
+
+                var a = int.Parse(dateStr);
+
+                while (a > 0)
+                {
+                    if (a % 2 == 1)
+                    {
+                        output = "1" + output;
+                    }
+                    else
+                    {
+                        output = "0" + output;
+                    }
+
+                    a /= 2;
+                }
+
+                strings.Add(output);
+            }
+
+            return string.Join("-", strings);
+        }
         #endregion
     }
 }
