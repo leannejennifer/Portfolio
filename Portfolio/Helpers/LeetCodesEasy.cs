@@ -288,10 +288,35 @@
         }
 
         #endregion
+        #region 258. Add Digits
+        public static int AddDigits(int num)
+        {
+            var ints = num
+                        .ToString()
+                        .ToCharArray()
+                        .Select(d =>
+                            int.Parse(d.ToString()))
+                        .ToList();
+
+            while (ints.Count > 1)
+            {
+                ints = ints.Sum()
+                    .ToString()
+                    .ToCharArray()
+                    .Select(d =>
+                        int.Parse(d.ToString()))
+                    .ToList();
+            }
+
+            return ints[0];
+            throw new NotImplementedException();
+        }
+
+        #endregion
         #region 557. Reverse Words in a String III
         public static string ReverseWords(string s)
         {
-            StringBuilder sb = new ();
+            StringBuilder sb = new();
 
             var words = s.Split();
             foreach (var (word, index) in words.Select((word, index) => (word, index)))

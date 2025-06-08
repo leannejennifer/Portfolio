@@ -411,5 +411,12 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.ConvertDateToBinary(date), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(38, 2)]
+        [TestCase(0, 0)]
+        public void AddDigits(int num, int expectedOutput)
+        {
+            Assert.That(LeetCodes.AddDigits(num), Is.EqualTo(expectedOutput));
+        }
     }
 }
