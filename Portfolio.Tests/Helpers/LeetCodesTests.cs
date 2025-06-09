@@ -418,5 +418,13 @@ namespace Portfolio.Tests.Helpers
         {
             Assert.That(LeetCodes.AddDigits(num), Is.EqualTo(expectedOutput));
         }
+
+        [TestCase(new string[] { "5", "2", "C", "D", "+" }, 30)]
+        [TestCase(new string[] { "5", "-2", "4", "C", "D", "9", "+", "+" }, 27)]        
+        [TestCase(new string[] { "1", "C" }, 0)]        
+        public void CalPoints(string[] operations, int expectedOutput)
+        {
+            Assert.That(LeetCodes.CalPoints(operations), Is.EqualTo(expectedOutput));
+        }
     }
 }

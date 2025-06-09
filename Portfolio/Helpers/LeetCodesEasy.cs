@@ -110,7 +110,7 @@
         public static string LongestCommonPrefix(string[] strs)
         {
             var startingWord = strs[0];
-            StringBuilder sb = new ();
+            StringBuilder sb = new();
             for (var i = 0; i < startingWord.Length; i++)
             {
                 for (var j = 1; j < strs.Length; j++)
@@ -333,6 +333,45 @@
             }
 
             return sb.ToString();
+        }
+
+        #endregion
+        #region 682. Baseball Game
+        public static int CalPoints(string[] operations)
+        {
+            List<int> ints = [];
+
+            /*An integer x.
+                Record a new score of x.
+            '+'.
+                Record a new score that is the sum of the previous two scores.
+            'D'.
+                Record a new score that is the double of the previous score.
+            'C'.
+                Invalidate the previous score, removing it from the record.*/
+
+            foreach (var i in operations)
+            {
+                if (int.TryParse(i, out int val))
+                {
+                    ints.Add(val);
+                }
+
+                switch (i)
+                {
+                    case "+":
+                        ints.Add(ints[^2] + ints[^1]);
+                        break;
+                    case "D":
+                        ints.Add(ints[^1] * 2);
+                        break;
+                    case "C":
+                        ints.RemoveAt(ints.Count - 1);
+                        break;
+                }
+            }
+
+            return ints.Sum();
         }
 
         #endregion
